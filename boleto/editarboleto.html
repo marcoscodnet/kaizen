@@ -1,0 +1,37 @@
+<!-- BEGIN: main -->
+<link rel="stylesheet" href="{WEB_PATH}/css/screensmall.css" type="text/css" />
+<link rel="stylesheet" href="{WEB_PATH}/css/calendar.css" type="text/css" />
+<script type="text/javascript" src="{WEB_PATH}/js/funciones.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/mootools.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/calendar.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/moocheck.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/fValidator.js"></script>
+<script type="text/javascript">
+
+window.addEvent("domready", function() {
+	var exValidatorA = new fValidator("editarboleto");
+});
+</script>
+
+<div class="divalta">
+	<div align="justify">
+	<p class="titulo">{titulo}</p>
+	</div>
+	
+	<!-- BEGIN: msj -->
+	<div class='{classMsj}'>{msj}</div>
+	<!-- END: msj -->
+	<form name='editarboleto' id='editarboleto' class="fValidator-form" action='doAction?action={submit}' method='post' enctype="multipart/form-data">
+			<p class="comentario" align="center">(En la impresi&oacute;n, el siguiente texto, se mostrar&aacute; justificado y con un formato establecido.)</p>
+			<input type="hidden" readonly name="cd_parametro" id="cd_parametro" value="{cd_parametro}"/>
+			<input type='hidden' name='ds_nombre' id='ds_nombre' size='40' value="{ds_nombre}"/>
+			<textarea name="ds_contenido" rows="30" cols="82">{ds_contenido}</textarea>			
+			<p style="text-align:center">
+			<input type='submit' name='submit' value='Aceptar' />
+			<input type='reset' name='cancelar' value='Cancelar' onclick="javascript:history.back(-1);" />
+			</p>
+	</form>
+	<div class="camposRequeridos">(*) Campos requeridos</div>
+	
+</div>
+<!-- END: main -->

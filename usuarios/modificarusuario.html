@@ -1,0 +1,53 @@
+<!-- BEGIN: main -->
+<link rel="stylesheet" href="{WEB_PATH}/css/screensmall.css" type="text/css" />
+<link rel="stylesheet" href="{WEB_PATH}/css/estilosValidador.css" type="text/css" />
+<script type="text/javascript" src="{WEB_PATH}/js/mootools.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/moocheck.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/fValidator.js"></script>
+<script type="text/javascript">
+
+window.addEvent("domready", function() {
+	var exValidatorA = new fValidator("modificarusuario");
+});
+
+</script>
+<div class="divaltausuario">
+		<div align="justify"><p class="titulo">{titulo}</p></div>
+		<!-- BEGIN: msj -->
+		<div class='{classMsj}'>{msj}</div>	
+		<!-- END: msj -->	
+	<form name='modificarusuario' id='modificarusuario' class="fValidator-form" action='doAction?action=modificar_usuarioKaizen' method='post' onsubmit="soniguales('pass', 'pass2');">
+		<p>C&oacute;digo:<input type="text" readonly name="cd_usuario" id="cd_usuario" value="{cd_usuario}"/></p>
+		<p>Nombre y Apellido (*) : <input type='text' name='apynom' id='apynom' size='40' class="fValidate['required']" value="{ds_apynom}"/></p>
+		<p>Nombre Usuario (*): <input type='text' name='usuario' id='usuario'  size='40' class="fValidate['required']" value="{ds_nomusuario}" readonly /></p> 
+		<p>E-Mail (*): <input type='text' name='mail' id='mail'  size='40' class="fValidate['required','email']" value="{ds_mail}"/></p>
+		<p id="ds_apynom">
+			<input type="hidden" name="cd_profesional" id="cd_profesional" value="{cd_profesional}"/>
+		</p>
+		Activo: <input type="checkbox" name="bl_activo" {checked} />
+		<p>Perfil (*): <select name='perfil' id='perfil'>
+					<!-- BEGIN: option -->				
+					<option value={cd_perfil}>{ds_perfil}</option>
+					<!-- END: option -->
+					</select> </p>
+
+                <p>Sucursal : <select name='cd_sucursal' id='cd_sucursal'>
+                                        <option value="">-- Seleccione uno--</option>
+					<!-- BEGIN: option_sucursal -->
+					<option value={cd_sucursal}>{ds_nombre}</option>
+					<!-- END: option_sucursal -->
+					</select> </p>
+		<div class="demo">
+		<p>Resetear Contrase&ntilde;a :
+			<label><input type='radio' name='bl_resetearclave' id='bl_resetearclave' size='25' value="true"/>Si</label>
+			<label><input type='radio' name='bl_resetearclave' id='bl_resetearclave' size='25' value="false" checked/>No</label>
+		</p>
+		</div>
+		<p style="text-align:center">
+		<input type='submit' name='submit' value='Modificar'/>
+		<input type='reset' name='cancelar' value='Cancelar' onclick="javascript:history.back(-1);"/>
+		</p>
+	</form>	
+	<div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END: main -->

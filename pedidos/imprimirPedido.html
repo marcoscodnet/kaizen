@@ -1,0 +1,45 @@
+<!-- BEGIN: main -->
+<link rel="stylesheet" href="{WEB_PATH}/css/screensmall.css"
+	type="text/css" />
+<link rel="stylesheet" href="{WEB_PATH}/css/estilosValidador.css"
+	type="text/css" />
+<script type="text/javascript" src="{WEB_PATH}/js/mootools.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/moocheck.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/fValidator.js"></script>
+
+<div class="divalta">
+<div align="center">
+<h3>El Movimiento se ha realizado correctamente!</h3>
+</div>
+
+<p><b>Fecha Movimiento: </b> {dt_movimiento}</p>
+<p><b>Sucursal Origen: </b> {ds_sucursalorigen}</p>
+<p><b>Sucursal Destino: </b> {ds_sucursaldestino}</p>
+
+<p>Listado de unidades:</p>
+<div id="unidadesAMover" class="block">
+<table>
+	<tr>
+		<th>C&oacute;digo Unidad</th>
+		<th>Producto</th>
+		<th>Nro motor</th>
+		<th>Nro Cuadro</th>
+	</tr>
+	<!-- BEGIN: filas -->
+	<tr>
+		<td>{cd_unidad}</td>
+		<td>{ds_producto}</td>
+		<td>{nu_motor}</td>
+		<td>{nu_cuadro}</td>
+	</tr>
+	<!-- END: filas -->
+</table>
+</div>
+<br>
+<p style="text-align: center;"><a
+	href="doAction?action=pdf_detalle_movimiento&id={cd_movimiento}">Imprimir
+Remito</a></p>
+
+<div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END: main -->

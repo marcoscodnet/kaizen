@@ -1,0 +1,38 @@
+<!-- BEGIN:main -->
+
+<div id="detalle_pagos">
+    <table>
+        <tr>
+            <th>Entidad</th>
+            <th>Importe</th>
+            <th>Observaci&oacute;n</th>
+            <th>Detalle Cuota</th>
+            <th>Acciones</th>
+        </tr>
+        <!-- BEGIN: pagos -->
+        <tr>
+            <td>{entidad}</td>
+            <td>{importe}</td>
+            <td>{ds_observacion}</td>
+            <td>{ds_detalle}</td>
+            <td><a href="#" onClick="eliminarCredito({indice});"><img src="img/del.gif" /></a>
+                <a href="#" onClick="editarCredito({indice});"><img src="img/edit.png" /></a></td>
+        </tr>
+        <!-- END: pagos -->
+    </table>
+</div>
+
+<div style="width:300px;text-align:right;">
+
+    <p>Entidad: <select name='cd_entidad' id='cd_entidad'>
+            <option value="">-- Entidad --</option>
+            <!-- BEGIN: option_entidad -->
+            <option value={cd_entidad}>{ds_entidad}</option>
+            <!-- END: option_entidad -->
+        </select></p>
+    <p>Importe: $<input name="nu_importe" id="nu_importe" value="{value_importe}" /></p>
+    <p>Observaci&oacute;n: <textarea name="ds_observacion" id="ds_observacion">{value_observacion}</textarea></p>
+    <p>Detalle Cuota: <textarea name="ds_detalle" id="ds_detalle">{value_detalle}</textarea></p>
+    <input type="button" onClick="altaCredito();" value="Agregar &Iacute;tem" />
+</div>
+<!-- END:main -->

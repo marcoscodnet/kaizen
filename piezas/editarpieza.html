@@ -1,0 +1,53 @@
+<!-- BEGIN: main -->
+<link rel="stylesheet" href="{WEB_PATH}/css/screensmall.css"
+	type="text/css" />
+<link rel="stylesheet" href="{WEB_PATH}/css/calendar.css"
+	type="text/css" />
+<script type="text/javascript" src="{WEB_PATH}/js/mootools.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/calendar.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/moocheck.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/fValidator.js"></script>
+<script type="text/javascript">
+var exValidatorA;
+	window.addEvent("domready", function() {
+		exValidatorA = new fValidator("editarpieza");
+	});
+
+</script>
+<div class="divalta">
+<div align="justify">
+<p class="titulo">{titulo}</p>
+</div>
+
+<!-- BEGIN: msj -->
+<div class='{classMsj}'>{msj}</div>
+<!-- END: msj -->
+<form name='editarpieza' id='editarpieza' class="fValidator-form"
+	action='doAction?action={submit}' method='post'><input
+	type="hidden" name="cd_pieza" id="cd_pieza" value="{cd_pieza}" />
+	<input type="hidden" name="nu_stock_actual"
+	id="nu_stock_actual" value="{nu_stock_actual}" />
+
+<p>C&oacute;digo: <input type="text" name="ds_codigo" id="ds_codigo"
+	value="{ds_codigo}" /></p>
+<p>Descripci&oacute;n: <input type="text" name="ds_descripcion"
+	id="ds_descripcion" value="{ds_descripcion}" size='50' /></p>
+<p>Stock M&iacute;nimo: <input type="text" name="nu_stock_minimo"
+	id="nu_stock_minimo" value="{nu_stock_minimo}" /></p>
+<!-- <p>Stock Actual: <input type="text" name="nu_stock_actual"
+	id="nu_stock_actual" value="{nu_stock_actual}" /></p>  -->
+<p>Precio Costo: <input type="text" name="qt_costo" id="qt_costo"
+	value="{qt_costo}" /></p>
+<p>Precio M&iacute;nimo: <input type="text" name="qt_minimo" id="qt_minimo"
+	value="{qt_minimo}" /></p>
+<p><label style="vertical-align: top;">Observaciones : </label> <textarea
+	rows="8" cols="30" id="ds_observacion" name="ds_observacion">{ds_observacion}</textarea>
+</p>
+
+<p style="text-align: center"><input type='submit' name='submit'
+	value='Aceptar' /> <input type='reset' name='cancelar'
+	value='Cancelar' onclick="javascript:history.back(-1);" /></p>
+</form>
+<div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END: main -->

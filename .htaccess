@@ -1,0 +1,5 @@
+RewriteEngine On
+
+RewriteRule ^.*doAction?(.*)$ controller.php [L,QSA]
+
+RewriteRule ^.*(.html)$ index.php [L,QSA]

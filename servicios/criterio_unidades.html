@@ -1,0 +1,30 @@
+<!-- BEGIN: main -->
+<span style="color: #666666">Fecha desde: <input type="text"
+	name="dt_desde" id="dt_desde" value="{dt_desde}" /></span>
+<span style="color: #666666">Fecha hasta: <input type="text"
+	name="dt_hasta" id="dt_hasta" value="{dt_hasta}" /></span>
+<span style="width: 550px"><select name='cd_sucursal'
+	id='cd_sucursal' class="fValidate['required']" style="width: 380px">
+	<option value="">-- Seleccionar Sucursal --</option>
+	<!-- BEGIN: option_sucursal -->
+	<option value={cd_sucursal}>{ds_sucursal}</option>
+	<!-- END: option_sucursal -->
+</select></span>
+<br />
+<span style="width: 550px"><select name='cd_cliente'
+	id='cd_cliente' class="fValidate['required']" style="width: 380px">
+	<option value="">-- Seleccionar Cliente --</option>
+	<!-- BEGIN: option_cliente -->
+	<option value={cd_cliente}>{ds_cliente}</option>
+	<!-- END: option_cliente -->
+</select></span>
+<br />
+<span style="width: 550px"><select name='cd_usuario'
+	id='cd_usuario' class="fValidate['required']" style="width: 380px">
+	<option value="">-- Seleccionar Vendedor --</option>
+	<!-- BEGIN: option_vendedor -->
+	<option value={cd_usuario}>{ds_nomusuario}</option>
+	<!-- END: option_vendedor -->
+</select></span>
+<br />
+<!-- END: main -->

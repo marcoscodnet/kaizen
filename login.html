@@ -1,0 +1,37 @@
+<!-- BEGIN: main -->
+
+	<div class="logo-name">
+		<h1>KAIZEN</h1>
+		<h2>Sistema Gesti&oacute;n de Ventas</h2>
+	</div>
+	
+	<form id = "loginform" name = "loginform" action='doAction?action=registrarse' method='post'>
+		<fieldset>
+
+		<div class="row">
+			<label for="usuario" class="username"></label>
+			<input type="text" class="text" name="usuario" id="usuario" required = "1" realname = "Nombre" />
+		</div>
+
+		<div class="row">
+			<label for="pass" class="pass"></label>
+
+			<input type="password" class="text" name="pass" id="pass" required = "0" realname = "Contraseña" />
+		</div>
+
+
+		<div class="row">
+
+			<button type="submit" class="loginbutn" title="Ingresar" onfocus="this.blur();"></button>
+		</div>
+		</fieldset>
+	</form>
+
+	
+	<!-- BEGIN: block1 -->
+	<div class="msjerror">
+		 {MSJ}<br />
+	</div>
+	<!-- END: block1 -->
+		
+<!-- END: main -->

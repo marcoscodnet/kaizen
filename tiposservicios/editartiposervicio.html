@@ -1,0 +1,34 @@
+<!-- BEGIN: main -->
+<link rel="stylesheet" href="{WEB_PATH}/css/screensmall.css" type="text/css" />
+<link rel="stylesheet" href="{WEB_PATH}/css/calendar.css" type="text/css" />
+<script type="text/javascript" src="{WEB_PATH}/js/funciones.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/mootools.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/calendar.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/moocheck.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/fValidator.js"></script>
+<script type="text/javascript">
+
+window.addEvent("domready", function() {
+	var exValidatorA = new fValidator("editartiposervicio");
+});
+</script>
+
+<div class="divalta">
+	<div align="justify">
+	<p class="titulo">{titulo}</p>
+	</div>
+	
+	<!-- BEGIN: msj -->
+	<div class='{classMsj}'>{msj}</div>
+	<!-- END: msj -->
+	<form name='editartiposervicio' id='editartiposervicio' class="fValidator-form" action='doAction?action={submit}' method='post' enctype="multipart/form-data">
+			<p style='display:{display_codigo};'>C&oacute;digo:<input type="text" readonly name="cd_tiposervicio" id="cd_tiposervicio" value="{cd_tiposervicio}"/></p>
+			<p> Nombre: <input type='text' name='ds_tiposervicio' id='ds_tiposervicio' size='40' value="{ds_tiposervicio}" class="fValidate['required']"/></p>			
+			<p style="text-align:center">
+			<input type='submit' name='submit' value='Aceptar' />
+			<input type='reset' name='cancelar' value='Cancelar' onclick="javascript:history.back(-1);" />
+			</p>
+	</form>
+	<div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END: main -->

@@ -1,0 +1,81 @@
+<!-- BEGIN: main -->
+<link rel="stylesheet" href="{WEB_PATH}/css/screensmall.css"
+	type="text/css" />
+<link rel="stylesheet" href="{WEB_PATH}/css/calendar.css"
+	type="text/css" />
+<script type="text/javascript" src="{WEB_PATH}/js/funciones.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/mootools.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/calendar.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/moocheck.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/fValidator.js"></script>
+<script type="text/javascript">
+var exValidatorA;
+	window.addEvent("domready", function() {
+		exValidatorA = new fValidator("editarstockpieza");
+	});
+
+	function buscarPrecio() {
+        var ajaxPiezas = new Ajax(
+        '{WEB_PATH}/piezas/ajax/Ajax_buscarPrecio.php', {
+            method : 'get',
+            data : $('editarstockpieza'),
+            update : 'resultado',
+            onComplete : function(){
+				//exValidatorA.initialize('editarstockpieza', exValidatorA.options);
+			}
+        });
+        ajaxPiezas.request();
+    }
+</script>
+<div class="divalta">
+<div align="justify">
+<p class="titulo">{titulo}</p>
+</div>
+
+<!-- BEGIN: msj -->
+<div class='{classMsj}'>{msj}</div>
+<!-- END: msj -->
+<form name='editarstockpieza' id='editarstockpieza' class="fValidator-form" action='doAction?action={submit}' method='post' enctype="multipart/form-data">
+
+<p style='display:{display_codigo};'>C&oacute;digo:<input type="text" readonly name="cd_stockpieza" id="cd_stockpieza" value="{cd_stockpieza}"/></p>
+        {pieza_hidden}
+        <p style="width: 500px;">
+        </p>
+        <p style="width:550px"> Pieza (*): <select name='cd_pieza' id='cd_pieza' class="fValidate['required']" style="width:380px" {disabled} onchange="buscarPrecio()">
+                <option value=""> -- Seleccione una -- </option>
+                <!-- BEGIN: option_pieza -->
+                <option value={cd_pieza}>{ds_codigo}</option>
+                <!-- END: option_pieza -->
+            </select>
+        </p>
+
+<p>Cantidad: <input type="text" name="nu_cantidad" id="nu_cantidad"
+	value="{nu_cantidad}" /></p>
+<div id="resultado">
+<p>Precio Costo: <input type="text" name="qt_costo" id="qt_costo"
+	value="{qt_costo}" /></p>
+<p>Precio M&iacute;nimo: <input type="text" name="qt_minimo" id="qt_minimo"
+	value="{qt_minimo}" /></p>
+</div>
+<p>Sucursal (*): <select name='cd_sucursal' id='cd_sucursal' class="fValidate['required']">
+	<option value="">-- Sucursal --</option>
+	<!-- BEGIN: option_sucursal -->
+	<option value={cd_sucursal}>{ds_sucursal}</option>
+	<!-- END: option_sucursal -->
+</select></p>
+<p>Proveedor (*): <select name='cd_proveedor' id='cd_proveedor' class="fValidate['required']">
+	<option value="">-- Proveedor --</option>
+	<!-- BEGIN: option_proveedor -->
+	<option value={cd_proveedor}>{ds_proveedor}</option>
+	<!-- END: option_proveedor -->
+</select></p>
+<p> Fecha ingreso: {dt_ingreso} <input type='hidden' name='dt_ingreso' id='dt_ingreso' value="{dt_ingreso}"  /></p>
+<p> Nro. Remito: <input type='text' name='ds_remito' id='ds_remito' size='30'  value="{ds_remito}" /></p>
+
+<p style="text-align: center"><input type='submit' name='submit'
+	value='Aceptar' /> <input type='reset' name='cancelar'
+	value='Cancelar' onclick="javascript:history.back(-1);" /></p>
+</form>
+<div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END: main -->

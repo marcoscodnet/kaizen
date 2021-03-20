@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * Acci�n listar usuarios.
+ * 
+ * @author bernardo
+ * @since 14-03-2010
+ * 
+ */
+class ListarUsuariosKaizenAction extends ListarUsuariosAction {
+
+    protected function getListarTableModel(ItemCollection $items) {
+        return new UsuarioKaizenTableModel($items);
+    }
+
+    protected function getEntidadManager() {
+        return new UsuarioKaizenManager();
+    }
+
+    protected function getUrlAccionListar() {
+        return 'listar_usuariosKaizen';
+    }
+
+    protected function parseAcciones(XTemplate $xtpl, $item) {
+        $this->parseAccionesDefault($xtpl, $item, $item->getCd_usuario(), 'usuarioKaizen', 'usuarioKaizen');
+    }
+
+    protected function getOpciones() {
+        $opciones[] = $this->buildOpcion('altausuarioKaizen', 'Agregar Usuario', 'alta_usuarioKaizen_init');
+        return $opciones;
+    }
+
+    protected function getUrlAccionExportarPdf() {
+        return 'pdf_usuariosKaizen';
+    }
+
+    protected function getUrlAccionExportarExcel() {
+        return 'excel_usuariosKaizen';
+    }    	protected function getFiltrosEspeciales(){		$xtpl =  new XTemplate(APP_PATH .  'usuarios/criterio_usuarios.html');		//$bl_activo_selected = FormatUtils::getParam('bl_activo', null);		$bl_activo_selected = $_GET['bl_activo'];		echo $bl_activo_selected;				$selectedActivos=($bl_activo_selected==1)?'selected="selected"':'';		$selectedInactivos=($bl_activo_selected==0)?'selected="selected"':'';				echo $selectedInactivos;				$xtpl->assign('key', 1);		$xtpl->assign('selected', $selectedActivos);		$xtpl->assign('value', 'Activos');		$xtpl->parse('main.option_usuarios');		$xtpl->assign('key', 0);		$xtpl->assign('selected', $selectedInactivos);		$xtpl->assign('value', 'Inactivos');		$xtpl->parse('main.option_usuarios');						$xtpl->parse('main');		return $xtpl->text('main');	}
+
+}

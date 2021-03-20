@@ -1,0 +1,100 @@
+<!-- BEGIN: main -->
+<link rel="stylesheet" href="{WEB_PATH}/css/screensmall.css"
+	type="text/css" />
+<link rel="stylesheet" href="{WEB_PATH}/css/calendar.css"
+	type="text/css" />
+<script type="text/javascript" src="{WEB_PATH}/js/mootools.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/calendar.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/moocheck.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/fValidator.js"></script>
+<script type="text/javascript">
+var exValidatorA;
+	window.addEvent("domready", function() {
+		exValidatorA = new fValidator("editarproducto");
+	});
+
+	function cargarMarcas() {
+		var ajaxProv = new Ajax(
+				'{WEB_PATH}/productos/ajax/Ajax_llenarComboMarca.php', {
+					method : 'get',
+					data : $('editarproducto'),
+					update : 'marcas',
+					onComplete : function() {
+						exValidatorA.initialize('editarproducto',
+								exValidatorA.options);
+					}
+				});
+		ajaxProv.request();
+	}
+	
+function cargarModelos() {
+	var ajaxProv = new Ajax(
+		'{WEB_PATH}/productos/ajax/Ajax_llenarComboModelo.php', {
+		method : 'get',
+		data : $('editarproducto'),
+		update : 'modelos',
+		onComplete : function() {
+			exValidatorA.initialize('editarproducto', exValidatorA.options);
+					}
+				});
+		ajaxProv.request();
+}
+</script>
+<div class="divalta">
+<div align="justify">
+<p class="titulo">{titulo}</p>
+</div>
+
+<!-- BEGIN: msj -->
+<div class='{classMsj}'>{msj}</div>
+<!-- END: msj -->
+<form name='editarproducto' id='editarproducto' class="fValidator-form"
+	action='doAction?action={submit}' method='post'>
+<p style='display:{display_codigo}'>C&oacute;digo:<input
+	type="text" readonly name="cd_producto" id="cd_producto"
+	value="{cd_producto}" /></p>
+
+<p>Tipo unidad (*) : <select name='cd_tipounidad' id='cd_tipounidad'
+	class="fValidate['required']" onchange="javascript:cargarMarcas();">
+	<option value="">-- Seleccione uno --</option>
+	<!-- BEGIN: option_tipounidad -->
+	<option value={cd_tipounidad}>{ds_tipounidad}</option>
+	<!-- END: option_tipounidad -->
+</select></p>
+<div id="marcas">
+	<p>Marca (*) : <select name='cd_marca' id='cd_marca' class="fValidate['required']" onchange="javascript:cargarModelos();">
+	<option value="">-- Seleccione uno --</option>
+		<!-- BEGIN: option_marca -->
+			<option value={cd_marca}>{ds_marca}</option>
+		<!-- END: option_marca -->
+</select>
+</p>
+</div>
+<div id="modelos">
+<p>Modelo (*) : <select name='cd_modelo' id='cd_modelo'
+	class="fValidate['required']">
+	<option value="">-- Seleccione uno --</option>
+	<!-- BEGIN: option_modelo -->
+	<option value={cd_modelo}>{ds_modelo}</option>
+	<!-- END: option_modelo -->
+</select></p>
+</div>
+<p>Color (*) : <select name='cd_color' id='cd_color'
+	class="fValidate['required']">
+	<option value="">-- Seleccione uno --</option>
+	<!-- BEGIN: option_color -->
+	<option value={cd_color}>{ds_color}</option>
+	<!-- END: option_color -->
+</select></p>
+<p>Valor Sugerido: <input type="text" name="nu_monto_sugerido"
+	id="nu_monto_sugerido" value="{nu_monto_sugerido}" /></p>
+<p>Stock M&iacute;nimo: <input type="text" name="nu_stock_minimo"
+	id="nu_stock_minimo" value="{nu_stock_minimo}" /></p>
+Discontinuo: <input type="checkbox" name="bl_discontinuo" {checked} />
+<p style="text-align: center"><input type='submit' name='submit'
+	value='Aceptar' /> <input type='reset' name='cancelar'
+	value='Cancelar' onclick="javascript:history.back(-1);" /></p>
+</form>
+<div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END: main -->

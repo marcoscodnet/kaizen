@@ -1,0 +1,48 @@
+<!-- BEGIN: main -->
+<script type="text/javascript" src="{WEB_PATH}/js/funciones.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/mootools.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/fValidator.js"></script>
+<script type="text/javascript">
+
+window.addEvent("domready", function() {
+	var exValidatorA = new fValidator("altausuario");
+});
+
+</script>
+<div class="divaltausuario">
+		<div align="justify"><p class="titulo">Alta Usuario</p></div>
+		<!-- BEGIN: msj -->
+		<div class='{classMsj}'>{msj}</div>	
+		<!-- END: msj -->	
+	<form name='altausuario' id='altausuario' action='doAction?action=alta_usuarioKaizen' class="fValidator-form" method='post' autocomplete="off">
+		
+		<p>Nombre y Apellido (*): <input type='text' name='apynom' id='apynom' size='40' class="fValidate['required']" /></p>
+		<p>Nombre Usuario (*): <input type='text' name='usuario' id='usuario'  size='40' class="fValidate['required']" /></p> 
+		<p>E-Mail (*): <input type='text' name='mail' id='mail'  size='40' class="fValidate['required','email']" /></p>
+		<p id="ds_apynom">
+			<input type="hidden" name="cd_profesional" id="cd_profesional" value=""/>
+		</p>
+		<p>Perfil (*): <select name='perfil' id='perfil' class="fValidate['required']">
+							<option value=""> -- Seleccione uno -- </option>
+							<!-- BEGIN: option -->				
+							<option value='{cd_perfil}'>{ds_perfil}</option>
+							<!-- END: option -->
+						</select> </p>
+               <p>Sucursal : <select name='cd_sucursal' id='cd_sucursal'>
+			<option value=""> -- Seleccione uno -- </option>
+			<!-- BEGIN: option_sucursal -->
+			<option value='{cd_sucursal}'>{ds_nombre}</option>
+			<!-- END: option_sucursal -->
+			</select>
+               </p>
+		<p>Contrase&ntilde;a (*) : <input type='password' name='pass' id='pass' size='25'class="fValidate['required']"/></p>
+		<p>Reingrese Contrase&ntilde;a (*): <input type='password' name='pass2' id='pass2' size='25'class="fValidate['required','=pass']" /></p>
+		<p style="text-align:center">
+		<input type='submit' name='submit' value='Agregar'/>
+		<input type='reset' name='cancelar' value='Cancelar' onclick="javascript:history.back(-1);"/>
+		</p>
+			
+	</form>		
+	<div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END: main -->

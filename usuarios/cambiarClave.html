@@ -1,0 +1,27 @@
+<!-- BEGIN: main -->
+<link rel="stylesheet" href="{WEB_PATH}/css/estilosValidador.css" type="text/css" />
+<script type="text/javascript" src="{WEB_PATH}/js/mootools.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/fValidator.js"></script>
+<script type="text/javascript">
+
+window.addEvent("domready", function() {
+	var exValidatorA = new fValidator("cambiarclave");
+});
+</script>  
+<div class="divaltausuario">
+		<div align="justify"><p class="titulo">{titulo}</p></div>
+		<!-- BEGIN: msj -->
+		<div class='{classMsj}'>{msj}</div>	
+		<!-- END: msj -->	
+	<form name='cambiarclave' id='cambiarclave' action='doAction?action=cambiar_clave' class="fValidator-form" method='post'>
+		<p>Clave Actual (*) : <input type='password' name='clave_actual' id='clave_actual' size='40' class="fValidate['required']"/></p>
+		<p>Nueva Clave (*): <input type='password' name='ds_password' id='ds_password'  size='40' class="fValidate['required']" /></p> 
+		<p>Repetir nueva Clave (*): <input type='password' name='pass2' id='pass2'  size='40' class="fValidate['required','=ds_password']" /></p>
+		<p>
+		<input type='submit' name='submit' value='Modificar'/>
+		<input type='reset' name='cancelar' value='Cancelar' onclick="javascript:history.back(-1);"/>
+		</p>
+	</form>	
+	(*) Campos Requeridos	
+</div>
+<!-- END: main -->

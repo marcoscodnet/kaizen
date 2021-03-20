@@ -1,0 +1,40 @@
+<!-- BEGIN: main -->
+<link rel="stylesheet" href="{WEB_PATH}/css/screensmall.css"
+	type="text/css" />
+<link rel="stylesheet" href="{WEB_PATH}/css/estilosValidador.css"
+	type="text/css" />
+<script type="text/javascript" src="{WEB_PATH}/js/mootools.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/moocheck.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/fValidator.js"></script>
+<script type="text/javascript">
+	window.addEvent("domready", function() {
+		var exValidatorA = new fValidator("editarmodelo");
+	});
+</script>
+<div class="divaltausuario">
+<div align="justify">
+<p class="titulo">{titulo}</p>
+</div>
+<!-- BEGIN: msj -->
+<div class='{classMsj}'>{msj}</div>
+<!-- END: msj -->
+<form name='editarmodelo' id='editarmodelo' class="fValidator-form"
+	action='doAction?action={submit}' method='post' enctype="multipart/form-data">
+<p style='display:{display_codigo};'>C&oacute;digo:<input
+	type="text" readonly name="cd_modelo" id="cd_modelo"
+	value="{cd_modelo}" /></p>
+<p>Nombre(*) : <input type='text' name='ds_modelo' id='apynom'
+	size='40' class="fValidate['required']" value="{ds_modelo}" /></p>
+<p>Marca (*): <select name='cd_marca' id='cd_marca' class="fValidate['required']">
+	<option value="">-- Seleccione uno --</option>
+	<!-- BEGIN: option_marca -->
+	<option value={cd_marca}>{ds_marca}</option>
+	<!-- END: option_marca -->
+</select></p>
+<div class="demo"></div>
+<input type='submit' name='submit' value='Aceptar' /> <input
+	type='reset' name='cancelar' value='Cancelar'
+	onclick="javascript:history.back(-1);" /></form>
+<div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END: main -->

@@ -1,0 +1,234 @@
+<!-- BEGIN: main -->
+<link rel="stylesheet" href="{WEB_PATH}/css/screensmall.css"
+	type="text/css" />
+<link media="all" rel="stylesheet"
+	href="{WEB_PATH}/css/sexyalertbox.css" type="text/css" />
+<script type="text/javascript" src="{WEB_PATH}/js/funciones.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/mootools.js"></script>
+
+<script type="text/javascript" src="{WEB_PATH}/js/sexyalertbox.v1.js"></script>
+<!-- <script type="text/javascript" src="{WEB_PATH}/js/mootools.js"></script> -->
+
+<script type="text/javascript" src="{WEB_PATH}/js/calendar.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/moocheck.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/fValidator.js"></script>
+<script type="text/javascript">
+	var exValidatorA;
+	window.addEvent("domready", function() {
+		exValidatorA = new fValidator("editarcliente");
+	});
+
+	function existeCliente() {
+		cd_tipodoc = document.getElementById('cd_tipodoc').value;
+		nu_doc = document.getElementById('nu_doc').value;
+		if (cd_tipodoc != "" && nu_doc != "") {
+			var ajaxCli = new Ajax(
+					'{WEB_PATH}/ventas/ajax/Ajax_existeCliente.php',
+					{
+						method : 'get',
+						data : $('editarcliente'),
+						update : 'rta',
+						onComplete : function() {
+							cd_cliente = document.getElementById('rta').innerHTML;
+							if ((cd_cliente != "") && (cd_cliente != "0")) {
+								jAlert("Error: Ya existe un cliente con ese tipo y número de documento");
+								document.getElementById('cd_tipodoc').value = "";
+								nu_duc = document.getElementById('nu_doc').value = "";
+								padre = nu_doc.parentNode;
+								document.getElementById('cd_tipodoc').focus();
+
+							}
+							exValidatorA.initialize('editarcliente',
+									exValidatorA.options);
+						}
+					});
+
+			ajaxCli.request();
+		}
+	}
+
+	function cargarProvincias() {
+		var ajaxProv = new Ajax(
+				'{WEB_PATH}/common/ajax/Ajax_cargarProvincias.php', {
+					method : 'get',
+					data : $('editarcliente'),
+					update : 'prov',
+					onComplete : function() {
+						cargarLocalidades();
+						exValidatorA.initialize('editarcliente',
+								exValidatorA.options);
+					}
+				});
+		ajaxProv.request();
+	}
+
+	function cargarLocalidades() {
+		var ajaxLoc = new Ajax(
+				'{WEB_PATH}/common/ajax/Ajax_cargarLocalidades.php',
+
+				{
+					method : 'get',
+					data : $('editarcliente'),
+					update : 'loc',
+					onComplete : function() {
+						exValidatorA.initialize('editarcliente',
+								exValidatorA.options);
+					}
+				});
+		ajaxLoc.request();
+	}
+
+	function datosConyuge() {
+		var ajaxLoc = new Ajax('{WEB_PATH}/common/ajax/Ajax_datosConyuge.php',
+
+		{
+			method : 'get',
+			data : $('editarcliente'),
+			update : 'conyuge',
+			onComplete : function() {
+				exValidatorA.initialize('editarcliente', exValidatorA.options);
+			}
+		});
+		ajaxLoc.request();
+	}
+
+    
+	function ejecutarAceptar(formulario, validator) {
+		document.getElementById("btnAceptar").value = "Enviando...";
+    	document.getElementById('btnAceptar').disabled=true;
+		validator.initialize('editarcliente', validator.options);
+		ok = validator._validateAll();
+		if (ok) {
+			
+			formulario.submit();
+		}
+		else{
+			document.getElementById("btnAceptar").value = "Aceptar";
+			document.getElementById('btnAceptar').disabled=false;
+		}
+	}
+
+</script>
+
+<div class="divalta">
+<div align="justify">
+<p class="titulo">{titulo}</p>
+</div>
+<div id="rta" style="display: none;"></div>
+<!-- BEGIN: msj -->
+<div class='{classMsj}'>{msj}</div>
+<!-- END: msj -->
+<form name='editarcliente' id='editarcliente' class="fValidator-form"
+	action='doAction?action={submit}' method='post'
+	enctype="multipart/form-data" ><input type="hidden" readonly
+	name="localidad_required" id="localidad_required" value="1"/> <input
+	type="hidden" readonly name="provincia_required"
+	id="provincia_required" value="1" /> <input type="hidden"
+	name="name_form" id="name_form" value="editarcliente" />
+<p style='display: {display_codigo}'>C&oacute;digo:<input
+	type="text" readonly name="cd_cliente" id="cd_cliente"
+	value="{cd_cliente}" /></p>
+<p>Apellido y Nombre(*): <input type='text' name='ds_apynom'
+	id='ds_apynom' size='40' value="{ds_apynom}"
+	class="fValidate['required']" /></p>
+<p>Tipo doc.(*) : <select name='cd_tipodoc' id='cd_tipodoc'
+	class="fValidate['required']" onchange="existeCliente();">
+	<option value="">-- Seleccione uno --</option>
+	<!-- BEGIN: option_tipodoc -->
+	<option value={cd_tipodoc}>{ds_tipodoc}</option>
+	<!-- END: option_tipodoc -->
+</select></p>
+<p>Nro doc. (*): <input type='text' name='nu_doc' id='nu_doc'
+	size='11' value="{nu_doc}" class="fValidate['required']"
+	onchange="existeCliente();" /></p>
+<p>Pa&iacute;s (*): <select name='pais' id='pais'
+	onchange="javascript:cargarProvincias();" class="fValidate['required']">
+	<option value="">-- Seleccione uno --</option>
+	<!-- BEGIN: option_pais -->
+	<option value={cd_pais}>{ds_pais}</option>
+	<!-- END: option_pais -->
+</select></p>
+<div id="prov">
+<p>Provincia (*): <select name='provincia' id='provincia'
+	class="fValidate['required']">
+	<option value="">-- Seleccione una --</option>
+	<!-- BEGIN: option_provincia -->
+	<option value={cd_provincia}>{ds_provincia}</option>
+	<!-- END: option_provincia -->
+</select></p>
+</div>
+<div id="loc">
+<p>Localidad (*): <select name='localidad' id='localidad'
+	class="fValidate['required']">
+	<option value="">-- Seleccione una --</option>
+	<!-- BEGIN: option_localidad -->
+	<option value={cd_localidad}>{ds_localidad}</option>
+	<!-- END: option_localidad -->
+</select></p>
+</div>
+<p>Fecha nacimiento (*): <input type='text' name='dt_nacimiento'
+	id='dt_nacimiento' size='11' value="{dt_nacimiento}"
+	class="fValidate['required'] fValidate['date']" /></p>
+<p>Estado civil (*): <select name='cd_estadocivil'
+	id='cd_estadocivil' onchange="javascript:datosConyuge();"
+	class="fValidate['required']">
+	<option value="">-- Seleccione una --</option>
+	<!-- BEGIN: option_estadocivil -->
+	<option value={cd_estadocivil}>{ds_estadocivil}</option>
+	<!-- END: option_estadocivil -->
+</select></p>
+<div id="conyuge"><!-- BEGIN: nombre_conyuge -->
+<p>Conyuge (*): <input type='text' name='ds_conyuge' id='ds_conyuge'
+	size='40' value="{ds_conyuge}" class="fValidate['required']" /></p>
+<!-- END: nombre_conyuge --></div>
+<p>Nacionalidad (*): <input type='text' name='ds_nacionalidad'
+	id='ds_nacionalidad' size='40' value="{ds_nacionalidad}"
+	class="fValidate['required']" /></p>
+<p>CP (*): <input type='text' name='ds_cp' id='ds_cp' size='11'
+	value="{ds_cp}" class="fValidate['required']" /></p>
+<p>Tel&eacute;fono particular (*): <input type='text'
+	name='ds_teparticular' id='ds_teparticular' size='30'
+	value="{ds_teparticular}" class="fValidate['required']" /></p>
+<p>Tel&eacute;fono movil: <input type='text' name='ds_telaboral'
+	id='ds_telaboral' size='30' value="{ds_telaboral}" /></p>
+<p>Email: <input type='text' name='ds_email'
+	id='ds_email' size='30' value="{ds_email}" class="fValidate['email']" /></p>
+<p>Actividad/Ocupaci&oacute;n : <input type='text'
+	name='ds_actividad_ocupacion' id='ds_actividad_ocupacion' size='40'
+	value="{ds_actividad_ocupacion}" /></p>
+<p>Lugar de trabajo : <input type='text' name='ds_lugartrabajo'
+	id='ds_lugartrabajo' size='40' value="{ds_lugartrabajo}" /></p>
+<p>CUIL/CUIT : <input type='text' name='ds_cuil_cuit'
+	id='ds_cuil_cuit' size='20' value="{ds_cuil_cuit}" /></p>
+<p>Condici&oacute;n IVA (*): <select name='cd_condiva'
+	id='cd_condiva' class="fValidate['required']">
+	<option value="">-- Seleccione una --</option>
+	<!-- BEGIN: option_condiva -->
+	<option value={cd_condiva}>{ds_condiva}</option>
+	<!-- END: option_condiva -->
+</select></p>
+
+<p>C&oacute;mo lleg&oacute; (*): <select name='cd_comollego'
+	id='cd_comollego' class="fValidate['required']">
+	<option value="">-- Seleccione uno --</option>
+	<!-- BEGIN: option_comollego -->
+	<option value={cd_comollego}>{ds_comollego}</option>
+	<!-- END: option_comollego -->
+</select></p>
+
+<p>Calle (*): <input type='text' name='ds_dircalle' id='ds_dircalle'
+	size='40' value='{ds_dircalle}' class="fValidate['required']" /></p>
+<p>Nro. (*): <input type='text' name='ds_dirnro' id='ds_dirnro'
+	size='11' value='{ds_dirnro}' class="fValidate['required']" /></p>
+<p>Piso : <input type='text' name='ds_dirpiso' id='ds_dirpiso'
+	size='11' value='{ds_dirpiso}' /></p>
+<p>Depto : <input type='text' name='ds_dirdepto' id='ds_dirdepto'
+	size='11' value='{ds_dirdepto}' /></p>
+
+<p style="text-align: center"><input type='button' name='btnAceptar' id='btnAceptar'
+	value='Aceptar' onClick="javascript:ejecutarAceptar(this.form, exValidatorA);" /> <input type='reset' name='cancelar'
+	value='Cancelar' onclick="javascript:history.back(-1);" /></p>
+</form>
+<div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END: main -->

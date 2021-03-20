@@ -1,0 +1,17 @@
+<!-- BEGIN: main -->
+<span style="color: #666666">Fecha desde: <input type="text"
+	name="dt_desde" id="dt_desde" value="{dt_desde}" /></span>
+<span style="color: #666666">Fecha hasta: <input type="text"
+	name="dt_hasta" id="dt_hasta" value="{dt_hasta}" /></span>
+
+
+<br />
+<span style="width: 550px"><select name='cd_usuario'
+	id='cd_usuario' class="fValidate['required']" style="width: 380px">
+	<option value="">-- Seleccionar Vendedor --</option>
+	<!-- BEGIN: option_vendedor -->
+	<option value={cd_usuario}>{ds_nomusuario}</option>
+	<!-- END: option_vendedor -->
+</select></span>
+<br />
+<!-- END: main -->

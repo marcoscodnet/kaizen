@@ -1,0 +1,173 @@
+<!-- BEGIN: main -->
+<link rel="stylesheet" href="{WEB_PATH}/css/screensmall.css"
+	type="text/css" />
+<link rel="stylesheet" href="{WEB_PATH}/css/estilosValidador.css"
+	type="text/css" />
+<script type="text/javascript" src="{WEB_PATH}/js/mootools.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/moocheck.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/fValidator.js"></script>
+<script type="text/javascript">
+	var exValidatorA
+	window.addEvent("domready", function() {
+		exValidatorA = new fValidator("altaunidadmovimiento");
+		validarForm = new fValidator("altamovimiento");
+	});
+
+	function cargarProductos() {
+		var ajaxProv = new Ajax(
+				'{WEB_PATH}/movimientos/ajax/Ajax_cargarProductoEnMovimiento.php',
+				{
+					method : 'get',
+					data : $('altaunidadmovimiento'),
+					update : 'productos',
+					onComplete : function() {
+                                                cargarNroMotor();
+						exValidatorA.initialize('altaunidadmovimiento',
+								exValidatorA.options);
+					}
+				});
+		ajaxProv.request();
+	}
+
+	function validarListado() {
+		if (document.getElementById("listado_unidades").value == "") {
+			jAlert("Se debe agregar al menos una unidad al movimiento.");
+			return false;
+		}
+		return true;
+	}
+	function cargarNroMotor() {
+		var ajaxProv = new Ajax(
+				'{WEB_PATH}/movimientos/ajax/Ajax_cargarNromotor.php', {
+					method : 'get',
+					data : $('altaunidadmovimiento'),
+					update : 'combo_nromotor',
+					onComplete : function() {
+
+						cargarNroCuadro();
+						exValidatorA.initialize('altaunidadmovimiento',
+								exValidatorA.options);
+					}
+				});
+		ajaxProv.request();
+	}
+
+	function cargarNroCuadro() {
+		var ajaxProv = new Ajax(
+				'{WEB_PATH}/movimientos/ajax/Ajax_cargarNrocuadro.php', {
+					method : 'get',
+					data : $('altaunidadmovimiento'),
+					update : 'combo_nrocuadro',
+					onComplete : function() {
+						exValidatorA.initialize('altaunidadmovimiento',
+								exValidatorA.options);
+					}
+				});
+		ajaxProv.request();
+	}
+</script>
+
+<div class="divalta">
+<div align="justify">
+<p class="titulo">{titulo}</p>
+</div>
+
+<!-- BEGIN: msj -->
+<div class='{classMsj}'>{msj}</div>
+<!-- END: msj -->
+<form name='altaunidadmovimiento' id='altaunidadmovimiento'
+	class="fValidator-form" action='doAction?action={submit}' method='post'
+	enctype="multipart/form-data"><input type="hidden"
+	name="cd_sucursalorigen_required" id="cd_sucursalorigen_required"
+	value="1" /> <input type="hidden" name="producto_required"
+	id="producto_required" value="1" /> <input type="hidden"
+	name="nromotor_required" id="nromotor_required" value="1" />
+{sucursal_hidden}
+<p>Sucursal origen (*): <select name='cd_sucursalorigen'
+	id='cd_sucursalorigen' class="fValidate['required']"
+	onChange="cargarProductos();"{disabled_origen}>
+	<option value="">-- Sucursal Origen --</option>
+	<!-- BEGIN: option_sucursalorigen -->
+	<option value={cd_sucursalorigen}>{ds_sucursalorigen}</option>
+	<!-- END: option_sucursalorigen -->
+</select></p>
+<div id="productos">
+<p>Producto (*): <select name='cd_producto' id='cd_producto'
+	class="fValidate['required']" onChange="cargarNroMotor()">
+	<option value="">-- Producto --</option>
+	<!-- BEGIN: option_producto -->
+	<option value={cd_producto}>{ds_producto}</option>
+	<!-- END: option_producto -->
+</select></p>
+</div>
+<div id="combo_nromotor">
+<p>Nro. Motor(*): <select name='cd_unidad' id='nu_motor'
+	class="fValidate['required']">
+	<option value="">-- Nro motor --</option>
+	<!-- BEGIN: option_numotor -->
+	<option value={cd_unidad}>{nu_motor}</option>
+	<!-- END: option_producto -->
+</select></p>
+</div>
+<div id="combo_nrocuadro">
+<p>Nro. Cuadro (*): <select name='cd_unidad' id='nu_cuadro'
+	class="fValidate['required']">
+	<option value="">-- Nro cuadro --</option>
+	<!-- BEGIN: option_numotor -->
+	<option value={cd_unidad}>{nu_motor}</option>
+	<!-- END: option_producto -->
+</select></p>
+</div>
+<p><input type='submit' name='submit' value='Agregar' /></p>
+</form>
+<div id="unidadesAMover" class="block">
+<table>
+	<tr>
+		<th>Sucursal origen</th>
+		<th>Producto</th>
+		<th>Nro motor</th>
+		<th>Nro Cuadro</th>
+		<th>Eliminar</th>
+	</tr>
+	<!-- BEGIN: filas -->
+	<tr>
+		<td>{ds_sucursalorigen}</td>
+		<td>{ds_producto}</td>
+		<td>{nu_motor}</td>
+		<td>{nu_cuadro}</td>
+		<td><a
+			href='doAction?action=eliminar_unidaddemovimiento&id={indice}'> <img
+			src="img/del.gif" /> </a></td>
+
+	</tr>
+	<!-- END: filas -->
+</table>
+</div>
+
+<form name='altamovimiento' id='altamovimiento' class="fValidator-form"
+	action='doAction?action=alta_movimiento' method='post'
+	enctype="multipart/form-data" onSubmit="return validarListado();"><input
+	type='hidden' name='cd_sucursalorigen' id='cd_sucursalorigen'
+	value="{cd_sucursalorigen}" /> <input type='hidden' name='cd_unidad'
+	id='cd_unidad' value="{cd_unidad}" /> <input type="hidden"
+	name="listado_unidades" id="listado_unidades"
+	value="{listado_unidades}" class="fValidate['required']" />
+<p>Sucursal destino (*): <select name='cd_sucursaldestino'
+	id='cd_sucursaldestino' class="fValidate['required']">
+	<option value="">-- Sucursal Destino --</option>
+	<!-- BEGIN: option_sucursal -->
+	<option value={cd_sucursal}>{ds_sucursal}</option>
+	<!-- END: option_sucursal -->
+</select></p>
+<p>Fecha movimiento : <input name="dt_movimiento" id="dt_movimiento"
+	value="{dt_movimiento}" class="fValidate['date']" /></p>
+<p><span style="vertical-align: top";>Observaci&oacute;n: </span><textarea
+	name="ds_observacion" id="ds_observacion" cols="40"></textarea></p>
+<input type='submit' name='submit' value='Realizar Movimiento' /> <input
+	type='reset' name='cancelar' value='Cancelar'
+	onclick="javascript:history.back(-1);" /></form>
+
+
+<div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END: main -->

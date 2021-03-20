@@ -1,0 +1,36 @@
+<!-- BEGIN: main -->
+<div style="float: left; width: 100%">
+    <div class="block">
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>
+                        <a>
+				Código
+                        </a>
+                    </th>
+                    <th>
+                        <a>
+				Producto
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <!-- BEGIN: row -->
+            <tbody class="{row_class}">
+                <tr>
+                    <td class="acciones">
+                        <input type="radio" name="producto_selected" value="{cd_producto}||{ds_producto}">
+                    </td>
+                    <td>{cd_producto}</td>
+                    <td>{ds_producto}</td>
+
+                </tr>
+            </tbody>
+            <!-- END: row -->
+        </table>
+    </div>
+</div>
+<!-- END: main -->

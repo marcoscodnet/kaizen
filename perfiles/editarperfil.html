@@ -1,0 +1,45 @@
+<!-- BEGIN: main -->
+<link rel="stylesheet" href="{WEB_PATH}/css/screensmall.css" type="text/css" />
+<script type="text/javascript" src="{WEB_PATH}/js/mootools.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/moocheck.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/fValidator.js"></script>
+<script type="text/javascript">
+
+window.addEvent("domready", function() {
+	var exValidatorA = new fValidator("editarperfil");
+});
+</script>
+<div class="divalta">
+	<div align="justify">
+		<p class="titulo">{titulo}</p>
+	</div>
+	<!-- BEGIN: msj -->
+	<div class='{classMsj}'>{msj}</div>
+	<!-- END: msj -->
+	<form name='editarperfil' id='editarperfil' class="fValidator-form" action='doAction?action={submit}' method='post'>
+			<p style='display:{display_codigo};'>C&oacute;digo:<input type="text" readonly name="cd_perfil" id="cd_perfil" value="{cd_perfil}"/></p>
+			<p>Nombre de Perfil (*): <input type='text' name='ds_perfil' id='ds_perfil' size='40' class="fValidate['required']" value="{ds_perfil}" /></p>
+			<div class="demo">
+				<table class="tablaListado" border="1">
+					<tr>
+						<th colspan="4">Funciones</th>
+					</tr>	
+			
+					<!-- BEGIN: row -->
+					<tr>
+						<!-- BEGIN: funciones -->
+						<td>
+							<p><label><input type="checkbox" name="funciones[]" value={cd_funcion} class="fValidate['required']"/> {ds_funcion} </label></p>
+						</td>
+						<!-- END: funciones -->
+					</tr>
+					<!-- END: row -->
+				</table>
+			</div>
+			<p style="text-align:center">
+			<input type='submit' name='submit' value='Aceptar' />
+			<input type='reset' name='cancelar' value='Cancelar' onclick="javascript:history.back(-1);" />
+			</p>
+	</form>
+</div>
+<!-- END: main -->

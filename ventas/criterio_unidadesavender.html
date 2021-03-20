@@ -1,0 +1,12 @@
+<!-- BEGIN: main -->
+<p style="width: 420px;"><img
+	onClick="buscarProductoenUnidades('productos/doAction?action=buscar_productos');return false;"
+	src="img/consultar.gif" style="float: right; display: inline;" /></p>
+<p style="width: 550px"><select name='cd_producto'
+	id='cd_producto' class="fValidate['required']" style="width: 380px">
+	<option value="">-- Buscar Producto --</option>
+	<!-- BEGIN: option_producto -->
+	<option value={cd_producto}>{ds_producto}</option>
+	<!-- END: option_producto -->
+</select></p>
+<!-- END: main -->

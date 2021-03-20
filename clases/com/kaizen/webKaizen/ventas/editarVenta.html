@@ -1,0 +1,185 @@
+<!-- BEGIN: main -->
+<link rel="stylesheet" href="{WEB_PATH}/css/screensmall.css"
+	type="text/css" />
+<link rel="stylesheet" href="{WEB_PATH}/css/estilosValidador.css"
+	type="text/css" />
+<script type="text/javascript" src="{WEB_PATH}/js/mootools.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/moocheck.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/fValidator.js"></script>
+<script type="text/javascript">
+	var exValidatorA
+	window.addEvent("domready", function() {
+		exValidatorA = new fValidator("altaventa");
+	});
+
+	function existeCliente() {
+		cd_tipodoc = document.getElementById('cd_tipodoc').value;
+		nu_doc = document.getElementById('nu_doc').value;
+		if (cd_tipodoc != "" && nu_doc != "") {
+			var ajaxCli = new Ajax(
+					'{WEB_PATH}/ventas/ajax/Ajax_existeCliente.php',
+					{
+						method : 'get',
+						data : $('altaventa'),
+						update : 'rta',
+						onComplete : function() {
+							cd_cliente = document.getElementById('rta').innerHTML;
+							document.getElementById('cd_cliente').value = cd_cliente;
+							document.getElementById('rta').innerHTML = "";
+							if ((cd_cliente != "") && (cd_cliente != "0")) {
+								editarCliente('{url_editarcliente}'
+										+ cd_cliente, 'Modificar Cliente',
+										'actualizarDatosCliente();');
+							} else {
+
+								editarCliente('{url_altacliente}&cd_tipodoc='
+										+ cd_tipodoc + '&nu_doc=' + nu_doc,
+										'Alta Cliente',
+										'actualizarDatosCliente();');
+							}
+						}
+					});
+
+			ajaxCli.request();
+		} else {
+			if (cd_tipodoc == "") {
+				alert('Debe seleccionar un tipo de documento');
+			} else {
+				if (nu_doc == "") {
+					alert('Debe ingresar un número de documento');
+				}
+			}
+		}
+	}
+
+	function datosCliente() {
+		var ajaxCli = new Ajax('{WEB_PATH}/ventas/ajax/ajax_datosCliente.php',
+				{
+					method : 'get',
+					data : $('altaventa'),
+					update : 'detalleCliente',
+					onComplete : function() {
+						$('dt_fecha').focus();
+					}
+				});
+		ajaxCli.request();
+	}
+
+	function cargarAltaCredito() {
+		var ajaxCli = new Ajax(
+				'{WEB_PATH}/ventas/ajax/ajax_cargarAltaCredito.php', {
+					method : 'get',
+					data : $('altaventa'),
+					update : 'alta_creditos'
+				});
+		ajaxCli.request();
+	}
+
+	function altaCredito() {
+		var ajaxCred = new Ajax('{WEB_PATH}ventas/ajax/ajax_altaCredito.php', {
+			method : 'get',
+			data : $('altaventa'),
+			update : 'alta_creditos'
+		});
+		ajaxCred.request();
+	}
+	function eliminarCredito(indice) {
+		var ajaxCred = new Ajax(
+				'{WEB_PATH}ventas/ajax/ajax_eliminarCredito.php', {
+					method : 'get',
+					data : 'indice=' + indice,
+					update : 'alta_creditos'
+				});
+		ajaxCred.request();
+	}
+
+	function editarCredito(indice) {
+		var ajaxCred = new Ajax('{WEB_PATH}ventas/ajax/ajax_editarCredito.php',
+				{
+					method : 'get',
+					data : 'indice=' + indice,
+					update : 'alta_creditos'
+				});
+		ajaxCred.request();
+	}
+</script>
+
+<div class="divalta">
+<div align="justify">
+<p class="titulo">{titulo}</p>
+</div>
+
+<!-- BEGIN: msj -->
+<div class='{classMsj}'>{msj}</div>
+<!-- END: msj -->
+<form name='altaventa' id='altaventa' class="fValidator-form"
+	action='doAction?action={submit}' method='post'
+	enctype="multipart/form-data"><input type="hidden"
+	name="cd_cliente" id="cd_cliente" value="{cd_cliente}" /> <input
+	type="hidden" name="cd_venta" id="cd_venta" value="{cd_venta}" /> <input
+	type="hidden" name="cd_usuario" id="cd_usuario" value="{cd_usuario}" />
+<div id="rta" style="display: none;"></div>
+<p>Tipo doc.(*): <select name='cd_tipodoc' id='cd_tipodoc'
+	class="fValidate['required']">
+	<option value="">-- Tipo doc. --</option>
+	<!-- BEGIN: option_tipodoc -->
+	<option value={cd_tipodoc}>{ds_tipodoc}</option>
+	<!-- END: option_tipodoc -->
+</select></p>
+<p style="width: 230px;"><img
+	onClick="existeCliente();return false;" src="img/consultar.gif"
+	style="float: right; display: inline;" /></p>
+<p>Nro. doc.: <input name="nu_doc" id="nu_doc" value="{nu_doc}"
+	onChange="existeCliente();" /></p>
+
+<div id="detalleCliente"><!-- BEGIN: detalle_vacio -->
+<div class="detalle">
+<p class="titulo">Detalle del cliente</p>
+<p class="comentario">Debe seleccionar tipo y nro de documento para
+ver los datos del cliente.</p>
+</div>
+<!-- END: detalle_vacio --></div>
+
+<!-- BEGIN: detalle_cliente --> {datosCliente}<!-- END: detalle_cliente -->
+<br />
+<p>Fecha : <input name="dt_fecha" id="dt_fecha" value="{dt_fecha}" /></p>
+<p>Sucursal de venta (*): <select name='cd_sucursal'
+	id='cd_sucursal' class="fValidate['required']">
+	<option value="">-- Sucursal --</option>
+	<!-- BEGIN: option_sucursal -->
+	<option value={cd_sucursal}>{ds_sucursal}</option>
+	<!-- END: option_sucursal -->
+</select></p>
+<br />
+<input type="hidden" name="cd_unidad" id="cd_unidad" value="{cd_unidad}" />
+<div class="detalle">
+<p class="titulo">Detalle de la unidad</p>
+<p><b>Producto:</b>{ds_producto}</p>
+<span><b>Nro. Motor:</b>{nu_motor}</span><br />
+<span><b>Nro. Cuadro:</b>{nu_cuadro}</span><br />
+<span><b>Sucursal actual:</b>{ds_sucursal}</span><br />
+</div>
+
+<p>Importe : <input name="nu_totalventa" id="nu_totalventa"
+	value="{nu_totalventa}" /></p>
+
+<p>Forma de Pago (*): <select name='cd_formapago' id='cd_formapago'
+	class="fValidate['required']" onChange="cargarAltaCredito();">
+	<option value="">-- Forma Pago --</option>
+	<option value={cd_contado}>{ds_contado}</option>
+	<option value={cd_credito}>{ds_credito}</option>
+</select></p>
+
+<div id="alta_creditos"><!-- BEGIN: detalle_creditos -->
+{listado_pagos}<!-- END: detalle_creditos --></div>
+
+
+<input type='submit' name='submit' value='Registrar Venta' /> <input
+	type='reset' name='cancelar' value='Cancelar'
+	onclick="javascript:history.back(-1);" /></form>
+
+<div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+
+<div id="ui-dialog" style="display: none;"></div>
+<!-- END: main -->

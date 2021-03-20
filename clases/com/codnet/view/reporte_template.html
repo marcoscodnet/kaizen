@@ -1,0 +1,132 @@
+<!-- BEGIN: main -->
+
+<link media="all" rel="stylesheet" href="{WEB_PATH}/css/sexyalertbox.css" type="text/css" />
+
+<script language="javascript" src="{WEB_PATH}/js/mootools_12.js"></script>
+
+<script language="javascript" src="{WEB_PATH}/js/sexyalertbox.v1.js"></script>
+<script language="javascript">
+function todos(){
+	document.getElementById('validar').value = "false";
+   
+    document.getElementById('filtro').value = "";
+    
+    submit_self(action);
+}
+</script>
+
+
+
+
+<div class="titulo_listar">{titulo}</div>
+
+
+<ul class="lista_opciones">
+
+	<!-- BEGIN: exportar -->
+	
+
+	<!-- BEGIN: pdf -->
+
+	<li class="pdf"><a  title="Exportar pdf" href="#" onclick="javascript:submit_blank('{accion_pdf}');"><span>Exportar pdf</span></a></li>
+
+	<!-- END: pdf -->
+	<!-- BEGIN: excel -->
+	<li class="excel"><a  title="Exportar xls" href="#" onclick="javascript:submit_self('{accion_excel}');"><span>Exportar xls</span></a></li>
+
+	<!-- END: excel -->
+	
+	<!-- END: exportar -->
+
+</ul>
+
+
+<div class="botonesTabla">
+
+<form name="buscar" id="buscar" action="doAction" method="GET" class="fValidator-form">
+
+	<input type="hidden" name="accion" id="accion" value="{accion_reporte}" />
+	
+	<input type="hidden" name="campoOrden" id="campoOrden" value="{campoOrden}" />
+
+		<input type="hidden" name="orden" id="orden" value="{orden}" />
+
+		<input type="hidden" name="validar" id="validar" value="false" />
+
+	<!-- BEGIN: criterio -->
+
+	
+
+			{criterio}
+
+			<input type="button" name="buscar"  id="buscar" value="Buscar" onclick="javascript:submit_self('{accion_reporte}');">
+			<input type="button" name="listar"  id="listar" onclick="javascript:todos('{accion_reporte}');" value="Listar Todos">
+
+	
+
+	
+
+	<!-- END: criterio -->
+
+</form>
+</div>
+<!-- BEGIN: msj -->
+
+<div class="{classMsj}"> {msj} 
+
+</div>
+
+<!-- END: msj -->
+
+
+
+<div class="paginas" id="paginador">
+
+	<div style="float:left">
+
+	<!-- BEGIN: PAG --> {PAG} <!-- END: PAG -->	
+
+	</div>
+
+	<!-- BEGIN: resultado --> {resultado} <!-- END: resultado -->
+
+</div>
+
+
+
+<div style="float: left; width: 100%"> 
+
+
+
+<!-- BEGIN: header -->
+
+<div class='tablaSummaryHeader'>{header}</div>
+
+
+<!-- END: header -->
+
+
+	<!-- BEGIN: listado -->
+
+	{listado}
+
+	<!-- END: listado -->
+
+
+
+<!-- BEGIN: footer -->
+
+<div class='tablaSummaryFooter'>{footer}</div>
+
+<!-- END: footer -->
+
+</div>
+
+
+
+
+
+
+
+<!-- END: main -->
+

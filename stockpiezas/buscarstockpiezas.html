@@ -1,0 +1,86 @@
+<!-- BEGIN: main -->
+<div class="titulo_listar">{titulo}</div>
+
+<ul class="lista_opciones">
+	<!-- BEGIN: opcion -->
+	<li class="{li_class}"><a title="{label}"
+		href="doAction?action={accion}"><span>{label}</span></a></li>
+	<!-- END: opcion -->
+</ul>
+
+<div class="botonesTabla">
+<form name="buscar" id="buscar" action="doAction" method="GET"
+	onsubmit="return verificarFiltro();"><input type="hidden"
+	name="accion" id="accion" value="{accion_listar}" /> <input
+	type="hidden" name="campoOrden" id="campoOrden" value="{campoOrden}" />
+<input type="hidden" name="orden" id="orden" value="{orden}" /> <input
+	type="hidden" name="validar" id="validar" value="false" /> <span><select
+	name='ds_descripcion' id='cd_tipounidad'
+	onchange="javascript:cargarMarcas();">
+	<option value="">-- Tipo de unidad --</option>
+	<!-- BEGIN: option_tipounidad -->
+	<option value={cd_tipounidad}>{ds_tipounidad}</option>
+	<!-- END: option_tipounidad -->
+</select></span>
+<div id="marcas" style="display: inline-block;"><span><select
+	name='cd_marca' id='cd_marca' onchange="javascript:cargarModelos();">
+	<option value="">-- Marca --</option>
+	<!-- BEGIN: option_marca -->
+	<option value={cd_marca}>{ds_marca}</option>
+	<!-- END: option_marca -->
+</select> </span></div>
+<div id="modelos" style="display: inline-block;"><span><select
+	name='cd_modelo' id='cd_modelo'>
+	<option value="">-- Modelo --</option>
+	<!-- BEGIN: option_modelo -->
+	<option value={cd_modelo}>{ds_modelo}</option>
+	<!-- END: option_modelo -->
+</select></span></div>
+<span><select name='cd_color' id='cd_color'>
+	<option value="">-- Color --</option>
+	<!-- BEGIN: option_color -->
+	<option value={cd_color}>{ds_color}</option>
+	<!-- END: option_color -->
+</select></span> <input type="button" name="buscar" id="buscar" value="Buscar"
+	onclick="buscarPiezas();"> <input type="button" name="listar"
+	id="listar" onclick="listarTodos();" value="Listar Todos"> <!-- BEGIN: msj -->
+<div class="{classMsj}">{msj}</div>
+<!-- END: msj -->
+
+<div id="resultado">
+<div style="float: left; width: 100%"><!-- BEGIN: header -->
+<div class='tablaSummaryHeader'>{header}</div>
+<!-- END: header -->
+<div class="block">
+
+<table border="1">
+	<thead>
+		<tr>
+			<th></th>
+			<!-- BEGIN: TH -->
+			<th><a title="Ordenar por {ordenar_por} - {orden}"
+				alt="Ordenar por {ordenar_por} - {orden}"
+				href="doAction{query_string}campoOrden={campo_orden}&orden={orden}&action={accion_listar}">
+			{encabezado} </a></th>
+			<!-- END: TH -->
+		</tr>
+	</thead>
+	<!-- BEGIN: row -->
+	<tbody class="{row_class}">
+		<tr>
+			<td class="acciones"><input type="radio" name="pieza_selected"
+				value="{cd_pieza}||{ds_codigo}"></td>
+			<td>{cd_pieza}</td>
+			<td>{ds_codigo}</td>
+		</tr>
+	</tbody>
+	<!-- END: row -->
+</table>
+</div>
+<!-- id=resultado--> <!-- BEGIN: footer -->
+<div class='tablaSummaryFooter'>{footer}</div>
+<!-- END: footer --></div>
+</div>
+</form>
+</div>
+<!-- END: main -->

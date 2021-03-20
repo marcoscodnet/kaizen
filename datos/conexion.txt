@@ -1,0 +1,29 @@
+Dominio: kaizenhonda.com.ar
+FTP Desarrollo
+Host:  ftp.kaizenhonda.com.ar
+Usr: desa@kaizenhonda.com.ar
+Psw: desacodnet159
+
+1)- SISTEMA TEST
+Nombre DB: kaizenho_test
+usuario: kaizenho_usrdb
+clave: 01usrdb49
+Carpeta del sistema: http://www.kaizenhonda.com.ar/gestion_test
+user ingreso: admin
+clave: kadin0149
+
+CPANEL
+Carpeta del sistema: http://www.kaizenhonda.com.ar/cpanel
+usuario: kaizenho
+clave: fgmk0149
+
+
+SERVIDOR NUEVO
+servidor 69.73.172.12
+usuario kaizenho
+clave fgmbk0149
+
+CPANEL
+Carpeta del sistema: http://69.73.172.12/cpanel
+usuario: kaizenho
+clave: fgmbk0149

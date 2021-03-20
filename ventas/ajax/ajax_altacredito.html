@@ -1,0 +1,69 @@
+<!-- BEGIN:main -->
+
+<div id="detalle_pagos">
+<table>
+	<tr>
+		<th>Fecha</th>
+		<th>Entidad</th>
+		<th>Importe</th>
+		<th>Importe pagado</th>
+		<th>Acciones</th>
+	</tr>
+	<!-- BEGIN: pagos -->
+	<tr>
+		<td>{fecha_vendedor}</td>
+		<td>{entidad}</td>
+		<td>{importe}</td>
+		<td>{importe_pagado}</td>
+		<td><a onClick="eliminarCredito({indice}, {cd_formapago});" class="ajax_action"><img
+			src="img/del.gif" /></a> <a class="ajax_action" onClick="editarCredito({indice}, {cd_formapago});"><img
+			src="img/edit.png" /></a></td>
+	</tr>
+	<!-- END: pagos -->
+</table>
+
+</div>
+<div style="width: 600px;">
+<div
+	style="width: 300px; text-align: right; float: left; position: relative;">
+<input type="hidden" name="count" id="count" value="{cantidad_items}" />
+<p>Entidad (*): <select name='cd_entidad' id='cd_entidad'>
+	<option value="">-- Entidad --</option>
+	<!-- BEGIN: option_entidad -->
+	<option value={cd_entidad}>{ds_entidad}</option>
+	<!-- END: option_entidad -->
+</select></p>
+<p>Importe (*): $<input name="nu_importe" id="nu_importe"
+	value="{value_importe}" /></p>
+<p>{label_fecha} (*): <input name="dt_pago" id="dt_pago"
+	value="{value_dt_pago}" class="fValidate['date']" /></p>
+
+<p>Obs. Vendedor: <textarea name="ds_detalle" id="ds_detalle">{value_detalle}</textarea></p>
+
+<!-- Parte que completa la contadora -->
+<p>Importe acreditado: $<input name="nu_pagado" id="nu_pagado"
+	value="{nu_pagado}" {campo_readonly}/></p>
+<p>Fecha : <input name="dt_contadora" id="nu_pagado"
+	value="{dt_contadora}" {campo_readonly} class="fValidate['date']" /></p>
+<p>Observaci&oacute;n: <textarea name="ds_observacion"
+	id="ds_observacion"{campo_readonly}>{value_observacion}</textarea></p>
+
+</div>
+<div
+	style="float: right; width: 270px; text-align: right; margin-top: 25%; position: relative;">
+<p>Importe Total : $<input name="nu_importetotal"
+	id="nu_importetotal" value="{nu_importetotal}" readonly /></p>
+<p>Importe Acreditado : $<input name="nu_importeacreditado"
+	id="nu_importeacreditado" value="{nu_importeacreditado}" readonly /></p>
+<p>
+</div>
+<div style="clear: both"></div>
+
+<p style="text-align: center;"><input type="button"
+	onClick="altaCredito();" value="Agregar &Iacute;tem" /></p>
+</div>
+<br />
+<script type="text/javascript">
+    document.getElementById('cd_entidad').focus();
+</script>
+<!-- END:main -->

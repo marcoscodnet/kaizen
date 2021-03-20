@@ -1,0 +1,93 @@
+<!-- BEGIN: main -->
+<link rel="stylesheet" href="{WEB_PATH}/css/screensmall.css"
+      type="text/css" />
+<!--<link rel="stylesheet" href="{WEB_PATH}/css/jquery.alerts.css" type="text/css" /> -->
+<link rel="stylesheet" href="{WEB_PATH}/css/estilosValidador.css"
+      type="text/css" />
+<script type="text/javascript" src="{WEB_PATH}/js/mootools.js"></script>
+<!--<script type="text/javascript" src="{WEB_PATH}/js/jquery/jquery.js"></script>-->
+<!-- <script type="text/javascript" src="{WEB_PATH}/js/jquery/jquery.alerts.js"></script> -->
+<script type="text/javascript" src="{WEB_PATH}/js/moocheck.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/fValidator.js"></script>
+
+<script type="text/javascript">
+    var exValidatorA;
+    
+    window.addEvent("domready", function() {
+        exValidatorA = new fValidator("altapedido");
+    });
+
+    function nuevapieza() {
+    	var piezanueva = document.getElementById('ds_pieza_nueva');
+    	var pieza = document.getElementById('cd_pieza');
+    	if(document.altapedido.nueva_pieza.checked) {
+        	piezanueva.readOnly = false;
+        	piezanueva.disabled = false;
+        	pieza.disabled = true;
+    	}
+    	else {
+    		piezanueva.value="";
+        	piezanueva.readOnly = true;
+       	    pieza.disabled = false;
+    	}
+    }    
+        
+</script>
+
+<div class="divalta">
+    <div align="justify">
+        <p class="titulo">{titulo}</p>
+    </div>
+
+    <!-- BEGIN: msj -->
+    <div class='{classMsj}'>{msj}</div>
+    <!-- END: msj -->
+    <form name='altapedido' id='altapedido' class="fValidator-form"
+          action='doAction?action={submit}' method='post'
+          enctype="multipart/form-data"><input type="hidden"
+                                         name="cd_cliente" id="cd_cliente" value="{cd_cliente}" /> 
+                                         <input	type="hidden" name="cd_pedido" id="cd_pedido" value="{cd_pedido}" />
+        <input type="hidden" name="funcion_ajax" id="funcion_ajax"
+               value="{funcion_ajax}" /> <input type="hidden" name="bl_autorizar"
+               id="bl_autorizar" value="{bl_autorizar}" />
+        <div id="rta" style="display: none;"></div>
+        <div id="validacion" style="display: none;"></div>
+        
+        <p>Código Pieza: <select name='cd_pieza' id='cd_pieza'>
+                <option value="">-- Pieza --</option>
+                <!-- BEGIN: option_pieza -->
+                <option value={cd_pieza}>{ds_codigo}</option>
+                <!-- END: option_pieza -->
+            </select></p>
+        Nueva Pieza: <input type="checkbox" name="nueva_pieza" onClick="nuevapieza();" /><input type="text" name="ds_pieza_nueva"
+		id="ds_pieza_nueva" value="{ds_pieza_nueva}" readonly="readonly" {disabled}/>    
+        <p>Cantidad: <input type="text" name="nu_cantidad"
+		id="nu_cantidad" value="{nu_cantidad}" /></p>
+		
+		<p>Estado: <select name='cd_estado' id='cd_estado'>
+			<option value="">-- Estado --</option>
+			<!-- BEGIN: option_estado -->
+			<option value={cd_estado}>{ds_estado}</option>
+			<!-- END: option_estado -->
+		</select></p>
+		<p>Fecha Pedido: <input type='text' name='dt_pedido' id='dt_pedido' size='20'  value="{dt_pedido}" /></p>
+        <p>Precio Mínimo: <input type="text" name="qt_minimo" id="qt_minimo"
+		value="{qt_minimo}" /></p>
+		
+		<p>Seña: <input type="text" name="qt_sena" id="qt_sena"
+	value="{qt_sena}" /></p>
+	
+<p><label style="vertical-align: top;">Observaciones : </label> <textarea
+	rows="8" cols="30" id="ds_observacion" name="ds_observacion">{ds_observacion}</textarea>
+</p>
+       <p style="text-align: center"><input type='submit' name='submit'
+	value='Aceptar' /> <input type='reset' name='cancelar'
+	value='Cancelar' onclick="javascript:history.back(-1);" /></p>
+               
+               </form>
+
+    <div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+
+<div id="ui-dialog" style="display: none;"></div>
+<!-- END: main -->

@@ -1,0 +1,106 @@
+<!-- BEGIN: main -->
+<link rel="stylesheet" href="{WEB_PATH}/css/screensmall.css"
+	type="text/css" />
+<link rel="stylesheet" href="{WEB_PATH}/css/calendar.css"
+	type="text/css" />
+<script type="text/javascript" src="{WEB_PATH}/js/funciones.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/mootools.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/calendar.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/moocheck.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/fValidator.js"></script>
+<script type="text/javascript">
+	var exValidatorA
+	window.addEvent("domready", function() {
+		exValidatorA = new fValidator("editarsucursal");
+	});
+
+	function cargarProvincias() {
+		var ajaxProv = new Ajax(
+				'{WEB_PATH}/common/ajax/Ajax_cargarProvincias.php', {
+					method : 'get',
+					data : $('editarsucursal'),
+					update : 'prov',
+					onComplete : function() {
+						cargarLocalidades();
+						exValidatorA.initialize('editarsucursal', exValidatorA.options);
+					}
+				});
+		ajaxProv.request();
+	}
+
+	function cargarLocalidades() {
+		var ajaxLoc = new Ajax(
+				'{WEB_PATH}/common/ajax/Ajax_cargarLocalidades.php',
+
+				{
+					method : 'get',
+					data : $('editarsucursal'),
+					update : 'loc',
+					onComplete : function() {
+						exValidatorA.initialize('editarsucursal', exValidatorA.options);
+					}
+				});
+		ajaxLoc.request();
+	}
+</script>
+
+<div class="divalta">
+<div align="justify">
+<p class="titulo">{titulo}</p>
+</div>
+
+<!-- BEGIN: msj -->
+<div class='{classMsj}'>{msj}</div>
+<!-- END: msj -->
+<form name='editarsucursal' id='editarsucursal' class="fValidator-form"
+	action='doAction?action={submit}' method='post'
+	enctype="multipart/form-data">
+	
+	<input type="hidden" readonly name="localidad_required" id="localidad_required" value="1" />
+	<input type="hidden" readonly name="provincia_required" id="provincia_required" value="1" />
+<p style='display: {display_codigo}'>C&oacute;digo:<input
+	type="text" readonly name="cd_sucursal" id="cd_sucursal"
+	value="{cd_sucursal}" /></p>
+<p>Nombre (*): <input type='text' name='ds_nombre' id='ds_nombre'
+	size='40' value="{ds_nombre}" class="fValidate['required']" /></p>
+<p>E-mail : <input type='text' name='ds_email' id='ds_email'
+	size='40' value="{ds_email}" /></p>
+<p>Tel&eacute;fono (*): <input type='text' name='ds_telefono'
+	id='ds_telefono' size='30' value="{ds_telefono}"
+	class="fValidate['required']" /></p>
+<p>Domicilio : <input type='text' name='ds_domicilio'
+	id='ds_domicilio' size='40' value="{ds_domicilio}" /></p>
+<p>Pa&iacute;s (*): <select name='pais' id='pais'
+	onchange="javascript:cargarProvincias();" class="fValidate['required']">
+	<option value="">-- Seleccione uno --</option>
+	<!-- BEGIN: option_pais -->
+	<option value={cd_pais}>{ds_pais}</option>
+	<!-- END: option_pais -->
+</select></p>
+<div id="prov">
+<p>Provincia (*): <select name='provincia' id='provincia'
+	class="fValidate['required']">
+	<option value="">-- Seleccione una --</option>
+	<!-- BEGIN: option_provincia -->
+	<option value={cd_provincia}>{ds_provincia}</option>
+	<!-- END: option_provincia -->
+</select></p>
+</div>
+<div id="loc">
+<p>Localidad (*): <select name='localidad' id='localidad'
+	class="fValidate['required']">
+	<option value="">-- Seleccione una --</option>
+	<!-- BEGIN: option_localidad -->
+	<option value={cd_localidad}>{ds_localidad}</option>
+	<!-- END: option_localidad -->
+</select></p>
+</div>
+<p>Comentario : <input type='text' name='ds_comentario'
+	id='ds_comentario' size='30' value='{ds_comentario}' /></p>
+<p style="text-align: center"><input type='submit' name='submit'
+	value='Aceptar' /> <input type='reset' name='cancelar'
+	value='Cancelar' onclick="javascript:history.back(-1);" /></p>
+</form>
+<div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END: main -->

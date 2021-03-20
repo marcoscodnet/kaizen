@@ -1,0 +1,82 @@
+<!-- BEGIN: main -->
+<div class="divvermovimiento">
+<div align="justify">
+<p class="titulo">Detalle del movimiento</p>
+</div>
+<table class="tablaVer">
+	<tr>
+		<td>
+		<p><strong>C&oacute;digo de la movimiento :</strong></p>
+		</td>
+		<td>
+		<p>{cd_movimiento}</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<p><strong>Fecha de movimiento:</strong></p>
+		</td>
+		<td>
+		<p>{dt_movimiento}</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<p><strong>Usuario que lo realiz&oacute; :</strong></p>
+		</td>
+		<td>
+		<p>{ds_nomusuario}</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<p><strong>Sucursal Origen:</strong></p>
+		</td>
+		<td>
+		<p>{ds_sucursalorigen}</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<p><strong>Sucursal Destino :</strong></p>
+		</td>
+		<td>
+		<p>{ds_sucursaldestino}</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<p><strong>Observaci&oacute;n:</strong></p>
+		</td>
+		<td>
+		<p>{ds_observacion}</p>
+		</td>
+	</tr>
+</table>
+<br />
+<br />
+<table>
+	<tr>
+		<th colspan="4">Detalle de unidades</th>
+	</tr>
+	<tr>
+		<th>Sucursal origen</th>
+		<th>Producto</th>
+		<th>Nro motor</th>
+		<th>Nro Cuadro</th>
+	</tr>
+	<!-- BEGIN: filas -->
+	<tr>
+		<td>{ds_sucursalorigen}</td>
+		<td>{ds_producto}</td>
+		<td>{nu_motor}</td>
+		<td>{nu_cuadro}</td>
+	</tr>
+	<!-- END: filas -->
+</table>
+
+<p><input type='button' name='volver' value='Volver'
+	onclick="javascript:history.back(-1);" />
+</div>
+
+<!-- END: main -->

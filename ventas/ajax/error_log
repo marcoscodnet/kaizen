@@ -1,0 +1,77 @@
+[15-Apr-2011 10:48:11] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 69
+[21-Apr-2011 13:15:10] PHP Fatal error:  Uncaught exception 'DBException' with message 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.333' at line 1' in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/dao/ClienteQuery.Class.php:101
+Stack trace:
+#0 /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/manager/ClienteManager.Class.php(82): ClienteQuery::getCliente(Object(CriterioBusqueda))
+#1 /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/clientes/ajax/AjaxExisteClienteAction.Class.php(32): ClienteManager->getCliente(Object(CriterioBusqueda))
+#2 /home/kaizenho/public_html/gestion_test/clases/com/codnet/action/ajax/SecureAjaxAction.Class.php(38): AjaxExisteClienteAction->executeImpl()
+#3 /home/kaizenho/public_html/gestion_test/ventas/ajax/Ajax_existeCliente.php(7): SecureAjaxAction->execute('20')
+#4 {main}
+  thrown in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/dao/ClienteQuery.Class.php on line 101
+[27-Apr-2011 11:45:36] PHP Fatal error:  Uncaught exception 'DBException' with message 'Unknown column 'dfdfdf' in 'where clause'' in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/dao/ClienteQuery.Class.php:101
+Stack trace:
+#0 /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/manager/ClienteManager.Class.php(82): ClienteQuery::getCliente(Object(CriterioBusqueda))
+#1 /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/clientes/ajax/AjaxExisteClienteAction.Class.php(32): ClienteManager->getCliente(Object(CriterioBusqueda))
+#2 /home/kaizenho/public_html/gestion_test/clases/com/codnet/action/ajax/SecureAjaxAction.Class.php(38): AjaxExisteClienteAction->executeImpl()
+#3 /home/kaizenho/public_html/gestion_test/ventas/ajax/Ajax_existeCliente.php(7): SecureAjaxAction->execute('4')
+#4 {main}
+  thrown in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/dao/ClienteQuery.Class.php on line 101
+[27-Apr-2011 11:45:36] PHP Fatal error:  Uncaught exception 'DBException' with message 'Unknown column 'dfdfdf' in 'where clause'' in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/dao/ClienteQuery.Class.php:101
+Stack trace:
+#0 /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/manager/ClienteManager.Class.php(82): ClienteQuery::getCliente(Object(CriterioBusqueda))
+#1 /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/clientes/ajax/AjaxExisteClienteAction.Class.php(32): ClienteManager->getCliente(Object(CriterioBusqueda))
+#2 /home/kaizenho/public_html/gestion_test/clases/com/codnet/action/ajax/SecureAjaxAction.Class.php(38): AjaxExisteClienteAction->executeImpl()
+#3 /home/kaizenho/public_html/gestion_test/ventas/ajax/Ajax_existeCliente.php(7): SecureAjaxAction->execute('4')
+#4 {main}
+  thrown in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/dao/ClienteQuery.Class.php on line 101
+[27-Apr-2011 11:45:57] PHP Fatal error:  Uncaught exception 'DBException' with message 'Unknown column 'eeeee' in 'where clause'' in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/dao/ClienteQuery.Class.php:101
+Stack trace:
+#0 /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/manager/ClienteManager.Class.php(82): ClienteQuery::getCliente(Object(CriterioBusqueda))
+#1 /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/clientes/ajax/AjaxExisteClienteAction.Class.php(32): ClienteManager->getCliente(Object(CriterioBusqueda))
+#2 /home/kaizenho/public_html/gestion_test/clases/com/codnet/action/ajax/SecureAjaxAction.Class.php(38): AjaxExisteClienteAction->executeImpl()
+#3 /home/kaizenho/public_html/gestion_test/ventas/ajax/Ajax_existeCliente.php(7): SecureAjaxAction->execute('4')
+#4 {main}
+  thrown in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/dao/ClienteQuery.Class.php on line 101
+[27-Apr-2011 12:25:01] PHP Fatal error:  Uncaught exception 'DBException' with message 'Unknown column 'vcvvv' in 'where clause'' in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/dao/ClienteQuery.Class.php:101
+Stack trace:
+#0 /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/manager/ClienteManager.Class.php(82): ClienteQuery::getCliente(Object(CriterioBusqueda))
+#1 /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/clientes/ajax/AjaxExisteClienteAction.Class.php(32): ClienteManager->getCliente(Object(CriterioBusqueda))
+#2 /home/kaizenho/public_html/gestion_test/clases/com/codnet/action/ajax/SecureAjaxAction.Class.php(38): AjaxExisteClienteAction->executeImpl()
+#3 /home/kaizenho/public_html/gestion_test/ventas/ajax/Ajax_existeCliente.php(7): SecureAjaxAction->execute('4')
+#4 {main}
+  thrown in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/dao/ClienteQuery.Class.php on line 101
+[27-Apr-2011 15:22:00] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 70
+[10-May-2011 11:11:57] PHP Fatal error:  Uncaught exception 'DBException' with message 'Unknown column 'AM364530' in 'where clause'' in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/dao/ClienteQuery.Class.php:101
+Stack trace:
+#0 /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/manager/ClienteManager.Class.php(82): ClienteQuery::getCliente(Object(CriterioBusqueda))
+#1 /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/clientes/ajax/AjaxExisteClienteAction.Class.php(32): ClienteManager->getCliente(Object(CriterioBusqueda))
+#2 /home/kaizenho/public_html/gestion_test/clases/com/codnet/action/ajax/SecureAjaxAction.Class.php(38): AjaxExisteClienteAction->executeImpl()
+#3 /home/kaizenho/public_html/gestion_test/ventas/ajax/Ajax_existeCliente.php(7): SecureAjaxAction->execute('22')
+#4 {main}
+  thrown in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/dao/ClienteQuery.Class.php on line 101
+[10-May-2011 11:12:23] PHP Fatal error:  Uncaught exception 'DBException' with message 'Unknown column 'AM364530' in 'where clause'' in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/dao/ClienteQuery.Class.php:101
+Stack trace:
+#0 /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/manager/ClienteManager.Class.php(82): ClienteQuery::getCliente(Object(CriterioBusqueda))
+#1 /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/clientes/ajax/AjaxExisteClienteAction.Class.php(32): ClienteManager->getCliente(Object(CriterioBusqueda))
+#2 /home/kaizenho/public_html/gestion_test/clases/com/codnet/action/ajax/SecureAjaxAction.Class.php(38): AjaxExisteClienteAction->executeImpl()
+#3 /home/kaizenho/public_html/gestion_test/ventas/ajax/Ajax_existeCliente.php(7): SecureAjaxAction->execute('22')
+#4 {main}
+  thrown in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/dao/ClienteQuery.Class.php on line 101
+[30-May-2011 17:05:50] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 71
+[30-Jun-2011 11:06:15] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 71
+[29-Jul-2011 12:27:38] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 71
+[04-Aug-2011 15:15:41] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 71
+[08-Aug-2011 10:26:23] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 71
+[09-Aug-2011 10:16:03] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 71
+[23-Aug-2011 14:10:24] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 71
+[15-Sep-2011 15:05:27] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 71
+[04-Oct-2011 17:10:55] PHP Fatal error:  Call to a member function size() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 33
+[05-Oct-2011 13:56:59] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 71
+[21-Oct-2011 17:15:29] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 71
+[27-Oct-2011 14:18:07] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 71
+[07-Nov-2011 12:44:55] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 71
+[11-Nov-2011 13:50:47] PHP Fatal error:  Call to a member function size() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 33
+[24-Nov-2011 11:44:09] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 71
+[12-Jan-2012 13:10:58] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 71
+[14-Jan-2012 06:43:15] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 71
+[14-Jan-2012 09:39:22] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 71
+[17-Jan-2012 14:44:39] PHP Fatal error:  Call to a member function getCd_entidad() on a non-object in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/ventas/ajax/AjaxEditarCreditoAction.Class.php on line 71

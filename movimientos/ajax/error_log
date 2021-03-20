@@ -1,0 +1,2 @@
+[01-Mar-2011 07:58:12] PHP Fatal error:  Call to undefined method ProductoManager::getProductoenSucursal() in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/action/movimientos/ajax/LlenarComboProductosAction.Class.php on line 17
+[01-Mar-2011 07:59:48] PHP Fatal error:  Call to undefined method ProductoQuery::getproductoensucursal() in /home/kaizenho/public_html/gestion_test/clases/com/kaizen/webKaizen/manager/ProductoManager.Class.php on line 63

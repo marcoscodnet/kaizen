@@ -1,0 +1,72 @@
+<!-- BEGIN: main -->
+<!--<link rel="stylesheet" href="{WEB_PATH}/css/estilos.css" type="text/css" />-->
+<link rel="stylesheet" href="{WEB_PATH}/css/screensmall.css"
+	type="text/css" />
+<link rel="stylesheet" href="{WEB_PATH}/css/calendar.css"
+	type="text/css" />
+<script type="text/javascript" src="{WEB_PATH}/js/funciones.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/mootools.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/calendar.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/moocheck.js"></script>
+<script type="text/javascript" src="{WEB_PATH}/js/fValidator.js"></script>
+<div class="divalta">
+<div align="justify">
+<p class="titulo">{titulo}</p>
+</div>
+
+<!-- BEGIN: msj -->
+<div class='{classMsj}'>{msj}</div>
+<!-- END: msj -->
+<form name='editarunidad' id='editarunidad' class="fValidator-form"
+	action='doAction?action={submit}' method='post'
+	enctype="multipart/form-data">
+<p style='display: { display_codigo'>C&oacute;digo:<input
+	type="text" readonly name="cd_unidad" id="cd_unidad"
+	value="{cd_unidad}" /></p>
+{producto_hidden}
+<p style="width: 500px;"><!-- BEGIN: imagen --> <img
+	onClick="buscarProductoenUnidades('{url}');return false;"
+	src="img/consultar.gif" style="float: right; display: inline;" /> <!-- END: imagen -->
+</p>
+<p style="width: 550px">Producto (*): <select name='cd_producto'
+	id='cd_producto' class="fValidate['required']" style="width: 380px" {disabled}>
+	<option value="">-- Seleccione uno --</option>
+	<!-- BEGIN: option_producto -->
+	<option value={cd_producto}>{ds_producto}</option>
+	<!-- END: option_producto -->
+</select></p>
+
+<p>Nro motor (*): <input type='text' name='nu_motor' id='nu_motor'
+	size='30' value="{nu_motor}" class="fValidate['required']"  {readonly_numotor}/></p>
+<p>Nro Cuadro (*): <input type='text' name='nu_cuadro'
+	id='nu_cuadro' size='30' value="{nu_cuadro}"
+	class="fValidate['required']" {readonly_nucuadro}/></p>
+<p>Fecha ingreso : <input type='text' name='dt_ingreso'
+	id='dt_ingreso' size='20' value="{dt_ingreso}"
+	class="fValidate['date']" {readonly_dt_ingreso}/></p>
+<p>Nro Patente: <input type='text' name='nu_patente' id='nu_patente'
+	size='20' value="{nu_patente}" /></p>
+<p>Nro Remito ingreso: <input type='text' name='nu_remitoingreso'
+	id='nu_remitoingreso' size='20' value="{nu_remitoingreso}" {readonly_nuremito}/></p>
+<p>A&ntilde;o/modelo: <input type='text' name='nu_aniomodelo'
+	id='nu_aniomodelo' size='20' value="{nu_aniomodelo}" /></p>
+<input type="hidden" name="cd_sucursal_actual" id="cd_sucursal_actual" value="{cd_sucursal_actual}"/>
+<p>Sucursal actual (*): <select name='cd_sucursal_actual'
+	id='cd_sucursal_actual' class="fValidate['required']" {disabled_sucursal}>
+	<!-- BEGIN: option_sucursal -->
+	<option value={cd_sucursal}>{ds_sucursal}</option>
+	<!-- END: option_sucursal -->
+</select></p>
+<p>Nro. env&iacute;o : <input type='text' name='nu_envio'
+	id='nu_envio' size='11' value="{nu_envio}" /></p>
+
+<p><label style="vertical-align: top;">Observaciones : </label> <textarea
+	rows="10" cols="30" id="ds_observacion" name="ds_observacion">{ds_observacion}</textarea>
+<p style="text-align: center"><input type='submit' name='submit'
+	value='Aceptar' /> <input type='reset' name='cancelar'
+	value='Cancelar' onclick="javascript:history.back(-1);" /></p>
+</form>
+<div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<div id="ui-dialog" style="display: none;"></div>
+<!-- END: main -->

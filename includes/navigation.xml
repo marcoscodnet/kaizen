@@ -1,0 +1,231 @@
+<?xml version='1.0' standalone='yes'?>
+<navegacion>
+	<!-- Acciones por default. 
+		 Permite definir para una entidad, las acciones por default:
+		 	- agregar, modificar, eliminar, listar, ver.
+		 Se debe indicar el nombre de la entidad y su plural.
+		 Las acciones quedaran definidas de la siguiente manera, tomando
+		 como ejemplo 'usuario'.
+		    - alta_usuario_init		
+		    - alta_usuario		
+		    - modificar_usuario_init		
+		    - modifiar_usuario		
+		    - eliminar_usuario		
+		    - listar_usuarios
+		 Ademas se le agregan los forwards por default.
+	-->
+	
+
+	<!-- inicio y login -->
+    <accion nombre='registrarse_init' clase='RegistrarseInitAction' />
+    <accion nombre='registrarse' clase='RegistrarseAction' />
+    <forward nombre='registrarse_success' url='doAction?action=inicio' />
+    <forward nombre='registrarse_error' url='doAction?action=registrarse_init' />
+
+    <accion nombre='inicio' clase='PanelAction'  menuGroupActivo=''/>
+    <accion nombre='salir' clase='SalirAction' />
+
+	<!-- usuarios y perfiles -->
+    <accion_default entidad='usuarioKaizen' plural='usuariosKaizen' menuGroups='' menuOptions='' menuGroupActivo='1'/>
+    <accion nombre='pdf_usuariosKaizen' clase='PDFUsuariosKaizenAction' />
+    <accion nombre='excel_usuariosKaizen' clase='ExcelUsuariosKaizenAction' />
+    <forward nombre='modificar_usuarioKaizen_success' url='doAction?action=listar_usuariosKaizen' />
+    <forward nombre='modificar_usuarioKaizen_error' url='doAction?action=listar_usuariosKaizen' />
+	
+    <accion_default entidad='perfil' plural='perfiles' menuGroups='' menuOptions='' menuGroupActivo='1'/>
+    <accion nombre='pdf_perfiles' clase='PDFPerfilesAction' />
+    <accion nombre='excel_perfiles' clase='ExcelPerfilesAction' />
+	
+    <accion nombre='cambiar_clave_init' clase='CambiarClaveInitAction'  menuGroupActivo='1'/>
+    <accion nombre='cambiar_clave' clase='CambiarClaveAction'  menuGroupActivo='1'/>
+    <forward nombre='cambiar_clave_success' url='doAction?action=listar_usuariosKaizen' />
+    <forward nombre='cambiar_clave_error' url='doAction?action=cambiar_clave_init' />
+
+	<!-- pagina no encontrada -->
+    <accion nombre='page_not_found' clase='PageNotFoundAction' />
+		
+	<!-- acceso denegado -->
+    <accion nombre='acceso_denegado' clase='AccesoDenegadoAction' />
+		
+	<!-- pagina de error -->
+    <accion nombre='error' clase='ErrorAction' />
+	
+	<!-- clientes -->
+    <accion_default entidad='cliente' plural='clientes'  menuGroupActivo='2'/>
+    <accion nombre='alta_cliente_min_init' clase='AltaClienteMinInitAction' />
+    <accion nombre='modificar_cliente_min_init' clase='ModificarClienteMinInitAction' />
+    <accion nombre='pdf_clientes' clase='PDFClientesAction' />
+    <accion nombre='excel_clientes' clase='ExcelClientesAction' />
+	
+	<!-- sucursales -->
+    <accion_default entidad='sucursal' plural='sucursales'  menuGroups='' menuOptions='' menuGroupActivo='2'/>
+    <accion nombre='pdf_sucursales' clase='PDFSucursalesAction' />
+    <accion nombre='excel_sucursales' clase='ExcelSucursalesAction' />
+	
+	<!-- colores -->
+    <accion_default entidad='color' plural='colores'  menuGroupActivo='2'/>
+    <accion nombre='pdf_colores' clase='PDFColoresAction' />
+    <accion nombre='excel_colores' clase='ExcelColoresAction' />
+	
+	
+	<!-- tiposunidades -->
+    <accion_default entidad='tipounidad' plural='tiposunidades'  menuGroupActivo='2'/>
+    <accion nombre='pdf_tiposunidades' clase='PDFTiposunidadesAction' />
+    <accion nombre='excel_tiposunidades' clase='ExcelTiposunidadesAction' />
+    
+    <!-- tiposservicios -->
+    <accion_default entidad='tiposervicio' plural='tiposservicios'  menuGroupActivo='2'/>
+    <accion nombre='pdf_tiposservicios' clase='PDFTiposserviciosAction' />
+    <accion nombre='excel_tiposservicios' clase='ExcelTiposserviciosAction' />
+	
+	<!-- entidades -->
+    <accion_default entidad='entidad' plural='entidades'  menuGroupActivo='2'/>
+    <accion nombre='pdf_entidades' clase='PDFEntidadesAction' />
+    <accion nombre='excel_entidades' clase='ExcelEntidadesAction' />
+	
+	
+	<!-- modelos -->
+    <accion_default entidad='modelo' plural='modelos'  menuGroupActivo='2'/>
+    <accion nombre='pdf_modelos' clase='PDFModelosAction' />
+    <accion nombre='excel_modelos' clase='ExcelModelosAction' />
+	
+	<!-- marcas -->
+    <accion_default entidad='marca' plural='marcas'  menuGroupActivo='2'/>
+    <accion nombre='pdf_marcas' clase='PDFMarcasAction' />
+    <accion nombre='excel_marcas' clase='ExcelMarcasAction' />
+	
+	<!-- productos -->
+    <accion_default entidad='producto' plural='productos'  menuGroupActivo='3'/>
+    <accion nombre='buscar_productos' clase='BuscarProductosAction' />
+    <accion nombre='buscar_productos_init' clase='BuscarProductosInitAction' />
+    <accion nombre='pdf_productos' clase='PDFProductosAction' />
+    <accion nombre='excel_productos' clase='ExcelProductosAction' />
+	
+	<!-- unidades -->
+    <accion_default entidad='unidad' plural='unidades' menuGroupActivo='3'/>
+    <accion nombre='pdf_unidades' clase='PDFUnidadesAction' />
+    <accion nombre='excel_unidades' clase='ExcelUnidadesAction' />
+    <accion nombre='autorizar_unidad' clase='AutorizarUnidadAction' />
+    <accion nombre='modificar_nroenvio_init' clase='ModificarNroEnvioInitAction' menuGroupActivo='3'/>
+    <accion nombre='modificar_nroenvio' clase='ModificarNroEnvioAction' />
+	
+    <accion nombre='desautorizar_unidad' clase='DesautorizarUnidadAction' />
+    <forward nombre='autorizar_unidad_success' url='doAction?action=listar_ventas' />
+    <forward nombre='autorizar_unidad_error' url='doAction?action=listar_ventas' />
+    <forward nombre='desautorizar_unidad_success' url='doAction?action=listar_ventas' />
+    <forward nombre='desautorizar_unidad_error' url='doAction?action=listar_ventas' />
+
+
+    <!-- Movimientos -->
+    <accion_default entidad='movimiento' plural='movimientos'  menuGroupActivo='3'/>
+    <accion nombre='alta_unidad_a_movimiento' clase='AltaUnidadAMovimientoAction' menuGroupActivo='3' />
+    <accion nombre='imprimir_movimiento_init' clase='ImprimirMovimientoInitAction' menuGroupActivo='3' />
+    <accion nombre='eliminar_movimiento' clase='EliminarMovimientoAction' menuGroupActivo='3' />
+    <forward nombre='eliminar_movimiento_success' url='doAction?action=listar_movimientos' />
+    <forward nombre='eliminar_movimiento_error' url='doAction?action=listar_movimientos' />
+    <accion nombre='pdf_movimientos' clase='PDFMovimientosAction' />
+    <accion nombre='excel_movimientos' clase='ExcelMovimientosAction' />
+    <accion nombre='pdf_detalle_movimiento' clase='PDFDetalleMovimientoAction' menuGroupActivo='3' />
+    <accion nombre='eliminar_unidaddemovimiento' clase='EliminarUnidadDeMovimientoAction' menuGroupActivo='3' />
+    <forward nombre='eliminar_unidaddemovimiento' url='doAction?action=alta_movimiento_init' />
+    <forward nombre='alta_unidadamover_success' url='doAction?action=alta_movimiento_init' />
+    <forward nombre='alta_movimiento_success' url='doAction?action=imprimir_movimiento_init' />
+    <forward nombre='alta_unidadamover_error' url='doAction?action=alta_movimiento_init' />
+
+	
+	<!-- ventas -->
+    <accion_default entidad='venta' plural='ventas'  menuGroupActivo='3'/>
+    <accion nombre='listar_unidades_a_vender' clase='ListarUnidadesAVenderAction' menuGroupActivo='3' />
+    <accion nombre='buscar_productos' clase='BuscarProductosAction' />
+    <accion nombre='pdf_formulario_venta' clase='PDFFormularioVentaAction' menuGroupActivo='3' />
+    <accion nombre='pdf_boleto_compra_venta' clase='PDFBoletoCompraVentaAction' menuGroupActivo='3' />
+    <accion nombre='pdf_ventas' clase='PDFVentasAction' />
+    <accion nombre='excel_ventas' clase='ExcelVentasAction' />
+    <accion nombre='excel_unidades_a_vender' clase='ExcelUnidadesAVenderAction' />
+    
+    <!-- servicios -->
+    <accion_default entidad='servicio' plural='servicios'  menuGroupActivo='3'/>
+    <accion nombre='listar_servicios' clase='ListarServiciosAction' menuGroupActivo='3' />
+    <accion nombre='listar_unidades_vendidas' clase='ListarUnidadesVendidasAction' menuGroupActivo='3' />
+ 	<accion nombre='pdf_orden_servicio' clase='PDFOrdenServicioAction' menuGroupActivo='3' />
+    <accion nombre='alta_servicio_init' clase='AltaServicioInitAction' menuGroupActivo='3' />
+    <accion nombre='pdf_servicios' clase='PDFServiciosAction' />
+    <accion nombre='excel_servicios' clase='ExcelServiciosAction' />
+   
+   <forward nombre='alta_servicio_success' url='doAction?action=listar_servicios' />
+    <forward nombre='alta_servicio_error' url='doAction?action=alta_servicio_init' />
+	
+	<!-- piezas -->
+    <accion_default entidad='pieza' plural='piezas' menuGroupActivo='3'/>
+    <accion nombre='buscar_piezas' clase='BuscarPiezasAction' />
+    <accion nombre='buscar_piezas_init' clase='BuscarPiezasInitAction' />
+    <accion nombre='pdf_piezas' clase='PDFPiezasAction' />
+    <accion nombre='excel_piezas' clase='ExcelPiezasAction' />
+    
+    <!-- stockpiezas -->
+    <accion_default entidad='stockPieza' plural='stockPiezas' menuGroupActivo='3'/>
+    <accion nombre='pdf_stockpiezas' clase='PDFStockPiezasAction' />
+    <accion nombre='excel_stockpiezas' clase='ExcelStockPiezasAction' />
+    
+    <accion nombre='reporte_piezasporsucursal' clase='ListarPiezasPorSucursalAction' menuGroupActivo='3'/>
+	<accion nombre='pdf_reporte_piezasporsucursal' clase='PDFPiezasPorSucursalAction' />
+	<accion nombre='excel_reporte_piezasporsucursal' clase='ExcelPiezasPorSucursalAction' />
+    
+    <!-- ventas piezas -->
+    <accion_default entidad='ventaPieza' plural='ventasPiezas'  menuGroupActivo='3'/>
+    <accion nombre='alta_pieza_a_ventapieza' clase='AltaPiezaAVentaPiezaAction' menuGroupActivo='3' />
+    <accion nombre='imprimir_ventaPieza_init' clase='ImprimirVentaPiezaInitAction' menuGroupActivo='3' />
+    <accion nombre='eliminar_ventapieza' clase='EliminarVentaPiezaAction' menuGroupActivo='3' />
+    <forward nombre='eliminar_ventapieza_success' url='doAction?action=listar_ventasPiezas' />
+    <forward nombre='eliminar_ventapieza_error' url='doAction?action=listar_ventasPiezas' />
+    <accion nombre='listar_ventaspiezas' clase='ListarVentasPiezasAction' />
+    <accion nombre='pdf_ventaspiezas' clase='PDFVentasPiezasAction' />
+    <accion nombre='excel_ventaspiezas' clase='ExcelVentasPiezasAction' />
+    <accion nombre='pdf_detalle_ventapieza' clase='PDFDetalleVentaPiezaAction' menuGroupActivo='3' />
+    <accion nombre='eliminar_piezadeventapieza' clase='EliminarPiezaDeVentaPiezaAction' menuGroupActivo='3' />
+    <forward nombre='eliminar_piezadeventapieza' url='doAction?action=alta_ventaPieza_init' />
+    <forward nombre='alta_piezaavender_success' url='doAction?action=alta_ventaPieza_init' />
+    <forward nombre='alta_ventapieza_success' url='doAction?action=imprimir_ventaPieza_init' />
+    <forward nombre='alta_piezaavender_error' url='doAction?action=alta_ventaPieza_init' />
+    
+    <forward nombre='modificar_piezaavender_success' url='doAction?action=modificar_ventaPieza_init' />
+    <forward nombre='modificar_ventapieza_success' url='doAction?action=imprimir_ventaPieza_init' />
+    <forward nombre='modificar_piezaavender_error' url='doAction?action=modificar_ventaPieza_init' />
+    
+    <accion nombre='modificar_pieza_a_ventapieza' clase='ModificarPiezaAVentaPiezaAction' menuGroupActivo='3' />
+    
+    <accion nombre='modificar_ventaPieza_init' clase='ModificarVentaPiezaInitAction' menuGroupActivo='3' />
+    <accion nombre='modificar_pieza_a_ventapieza' clase='ModificarPiezaAVentaPiezaAction' menuGroupActivo='3' />
+    <accion nombre='eliminar_piezadeventapieza_modificacion' clase='EliminarPiezaDeVentaPiezaModificacionAction' menuGroupActivo='3' />
+    <forward nombre='eliminar_piezadeventapieza_modificacion' url='doAction?action=modificar_ventaPieza_init' />
+        
+    <!-- pedidos -->
+    <accion_default entidad='pedido' plural='pedidos'  menuGroupActivo='3'/>
+    <accion nombre='buscar_piezas' clase='BuscarPiezasAction' />
+    <accion nombre='estado_pedido' clase='EstadoPedidoAction' />
+    <accion nombre='pdf_formulario_pedido' clase='PDFFormularioPedidoAction' menuGroupActivo='3' />
+    <accion nombre='pdf_pedidos' clase='PDFPedidosAction' />
+    <accion nombre='excel_pedidos' clase='ExcelPedidosAction' />
+    
+    <accion nombre='estado_apedir' clase='EstadoAPedirAction' />
+    <forward nombre='estado_pedido_success' url='doAction?action=listar_pedidos' />
+    <forward nombre='estado_pedido_error' url='doAction?action=listar_pedidos' />
+    <forward nombre='estado_apedir_success' url='doAction?action=listar_pedidos' />
+    <forward nombre='estado_apedir_error' url='doAction?action=listar_pedidos' />
+	
+	<!-- boleto -->
+    <accion_default entidad='boleto' plural='boleto'  menuGroupActivo='2'/>
+    <accion nombre='modificar_boleto_init' clase='ModificarBoletoInitAction' menuGroupActivo='2'/>
+    <accion nombre='modificar_boleto' clase='ModificarBoletoAction' menuGroupActivo='2'/>
+    <forward nombre='modificar_boleto_success' url='doAction?action=modificar_boleto_init' />
+    <forward nombre='modificar_boleto_error' url='doAction?action=modificar_boleto_init'/>
+	
+	<!-- forwards -->
+    <forward nombre='page_not_found' url='doAction?action=page_not_fount' />
+    <forward nombre='acceso_denegado' url='doAction?action=acceso_denegado' />
+    <forward nombre='error' url='doAction?action=error' />
+	
+	<!-- panel de control -->
+    <accion nombre='panel_control' clase='PanelAction' menuGroupActivo=''/>
+	
+</navegacion>

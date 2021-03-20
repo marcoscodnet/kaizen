@@ -1,0 +1,32 @@
+<!-- BEGIN: main -->
+<div class="divverusuario">
+		<div align="justify"><p class="titulo">Detalle de Marca</p></div>
+		<table class="tablaVer">
+		<tr>
+			<td><p><strong>C&oacute;digo de Marca :</strong></p></td>
+			<td><p>{cd_marca}</p></td>
+		</tr>
+		<tr>
+			<td><p><strong>Nombre Marca :</strong></p></td>
+			<td><p>{ds_marca}</p></td>
+		</tr>
+		<tr>
+			<td colspan="4">
+				<table class="tablaListado" border="1">
+					<tr>
+						<th colspan="4">Tipos Unidades</th>
+					</tr>	
+					<!-- BEGIN: row -->
+					<tr>
+						<!-- BEGIN: tiposunidades -->
+						<td>{ds_tipounidad}</td>
+						<!-- END: tiposunidades -->
+					</tr>
+					<!-- END: row -->
+				</table>			
+			</td> 
+		</tr>
+	</table>
+	<p><input type='button' name='volver' value='Volver' onclick="javascript:history.back(-1);"/>
+</div>
+<!-- END: main -->

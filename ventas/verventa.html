@@ -1,0 +1,105 @@
+<!-- BEGIN: main -->
+<div class="divverusuario">
+<div align="justify">
+<p class="titulo">{titulo}</p>
+</div>
+<table class="tablaVer">
+	<tr>
+		<td>
+		<p><strong>C&oacute;digo de la venta :</strong></p>
+		</td>
+		<td>
+		<p>{cd_venta}</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<p><strong>Fecha de venta:</strong></p>
+		</td>
+		<td>
+		<p>{dt_fecha}</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<p><strong>Importe sugerido:</strong></p>
+		</td>
+		<td>
+		<p>{importe_venta}</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<p><strong>Cliente:</strong></p>
+		</td>
+		<td>
+		<p>{ds_apynom}</p>
+		</td>
+	</tr>
+	<tr>
+	<tr>
+		<td>
+		<p><strong>Sucursal venta:</strong></p>
+		</td>
+		<td>
+		<p>{ds_sucursal}</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<p><strong>Vendedor :</strong></p>
+		</td>
+		<td>
+		<p>{ds_nomusuario}</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<p><strong>Unidad:</strong></p>
+		</td>
+		<td>
+		<p>{ds_producto}</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<p><strong>Forma de pago:</strong></p>
+		</td>
+		<td>
+		<p>{ds_formapago}</p>
+		</td>
+	</tr>
+</table>
+<br />
+<table>
+	<tr>
+		<th>Fecha Pago</th>
+		<th>Entidad</th>
+		<th>Importe</th>
+		<th>Detalle</th>
+		<th>Fecha Cra.</th>
+		<th>Observaci&oacute;n</th>
+		<th>Pagado</th>
+	</tr>
+	<!-- BEGIN:creditos -->
+	<tr style="font-size: 12px;">
+		<td>{dt_pagado}</td>
+		<td>{ds_entidad}</td>
+		<td>${nu_importe}</td>
+		<td>{ds_detalle}</td>
+		<td>{dt_contadora}</td>
+		<td>{ds_observacion}</td>
+		<td>${nu_pagado}</td>
+	</tr>
+	<!-- END:creditos -->
+
+</table>
+
+
+
+
+<p><input type='button' name='volver' value='Volver'
+	onclick="javascript:history.back(-1);" />
+</div>
+
+<!-- END: main -->
