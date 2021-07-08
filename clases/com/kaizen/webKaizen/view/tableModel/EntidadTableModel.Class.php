@@ -1,23 +1,23 @@
 <?php
 /**
- * 
+ *
  * @author Lucrecia
  * @since 03-01-2011
- * 
+ *
  * Table model para entidades.
- * 
+ *
  */
 
 class EntidadTableModel extends ListarTableModel{
 
-	private $columnNames = array('Código', 'Entidad');
+	private $columnNames = array('CÃ³digo', 'Entidad','Activa');
 
-	private $columnWidths = array(30, 80);
-	
+	private $columnWidths = array(30, 80, 20);
+
 	public function EntidadTableModel(ItemCollection $items){
 		$this->items = $items;
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see clases/com/codnet/view/tableModel/TableModel#getTitle()
@@ -25,15 +25,15 @@ class EntidadTableModel extends ListarTableModel{
 	function getTitle(){
 		return "Entidades";
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see clases/com/codnet/view/tableModel/TableModel#getColumnCount()
 	 */
 	function getColumnCount(){
-		return 2;
+		return 3;
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see clases/com/codnet/view/tableModel/TableModel#getColumnName($columnIndex)
@@ -41,7 +41,7 @@ class EntidadTableModel extends ListarTableModel{
 	function getColumnName($columnIndex){
 		return $this->columnNames[$columnIndex];
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see clases/com/codnet/view/tableModel/TableModel#getColumnWidth($columnIndex)
@@ -49,7 +49,7 @@ class EntidadTableModel extends ListarTableModel{
 	function getColumnWidth($columnIndex){
 		return $this->columnWidths[$columnIndex];
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see clases/com/codnet/view/tableModel/TableModel#getRowCount()
@@ -57,7 +57,7 @@ class EntidadTableModel extends ListarTableModel{
 	function getRowCount(){
 		$this->items->size();
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see clases/com/codnet/view/tableModel/TableModel#getValueAt($rowIndex, $columnIndex)
@@ -73,16 +73,25 @@ class EntidadTableModel extends ListarTableModel{
 		switch ($columnIndex) {
 			case 0: $value= $oEntidad->getCd_entidad(); break;
 			case 1: $value= $oEntidad->getDs_entidad(); break;
+            case 2:
+
+                if ($oEntidad->getBl_activo()==1) {
+                    $value = 'SI';
+                }
+                else $value = 'NO';
+
+                break;
 			default: $value='';	break;
 		}
 		return $value;
 	}
-	
+
 	public function getEncabezados(){
 	 	$encabezados[]= $this->buildTh($this->getColumnName(0), 'cd_entidad', 'c&oacute;digo de entidad');
 		$encabezados[]= $this->buildTh($this->getColumnName(1), 'ds_entidad', 'entidad');
-	 	return $encabezados;	
+        $encabezados[]= $this->buildTh($this->getColumnName(2), 'bl_activo', 'activa');
+	 	return $encabezados;
 	}
-	
+
 }
 ?>

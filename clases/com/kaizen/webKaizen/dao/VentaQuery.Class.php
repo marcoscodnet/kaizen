@@ -92,6 +92,8 @@ class VentaQuery {
         $sql .= $criterio->buildORDERBY();
         $sql .= $criterio->buildLIMIT();
 
+
+
         $result = $db->sql_query($sql);
         if (!$result)//hubo un error en la bbdd.
             throw new DBException($db->sql_error());
@@ -218,12 +220,12 @@ class VentaQuery {
         $sql .= "U.ds_nomusuario, U.ds_apynom, U.ds_mail, U.ds_password, U.cd_sucursal as cd_sucursalUsuario, U.cd_perfil,";
         $sql .= "LS.cd_localidad as cd_localidad_sucursal, LS.ds_localidad as ds_localidad_sucursal,LS.cd_provincia as cd_provincia_sucursal, ";
         $sql .= "A.dt_autorizacion, A.cd_autorizacion FROM venta V";
-        $sql .= " INNER JOIN unidad UN ON V.cd_unidad = UN.cd_unidad ";
-        $sql .= " INNER JOIN producto P ON UN.cd_producto = P.cd_producto ";
-        $sql .= " INNER JOIN tipo_unidad TU ON P.cd_tipo_unidad = TU.cd_tipo_unidad ";
-        $sql .= " INNER JOIN marca MA ON P.cd_marca = MA.cd_marca ";
-        $sql .= " INNER JOIN modelo M ON P.cd_modelo = M.cd_modelo ";
-        $sql .= " INNER JOIN color CO ON P.cd_color = CO.cd_color ";
+        $sql .= " LEFT JOIN unidad UN ON V.cd_unidad = UN.cd_unidad ";
+        $sql .= " LEFT JOIN producto P ON UN.cd_producto = P.cd_producto ";
+        $sql .= " LEFT JOIN tipo_unidad TU ON P.cd_tipo_unidad = TU.cd_tipo_unidad ";
+        $sql .= " LEFT JOIN marca MA ON P.cd_marca = MA.cd_marca ";
+        $sql .= " LEFT JOIN modelo M ON P.cd_modelo = M.cd_modelo ";
+        $sql .= " LEFT JOIN color CO ON P.cd_color = CO.cd_color ";
         $sql .= " LEFT JOIN autorizacion A ON A.cd_unidad = UN.cd_unidad ";
         $sql .= " INNER JOIN usuario U ON V.cd_usuario = U.cd_usuario ";
         $sql .= " LEFT JOIN sucursal S ON S.cd_sucursal = V.cd_sucursal ";

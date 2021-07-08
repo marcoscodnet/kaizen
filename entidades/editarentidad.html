@@ -17,13 +17,14 @@ window.addEvent("domready", function() {
 	<div align="justify">
 	<p class="titulo">{titulo}</p>
 	</div>
-	
+
 	<!-- BEGIN: msj -->
 	<div class='{classMsj}'>{msj}</div>
 	<!-- END: msj -->
 	<form name='editarentidad' id='editarentidad' class="fValidator-form" action='doAction?action={submit}' method='post' enctype="multipart/form-data">
 			<p style='display:{display_codigo};'>C&oacute;digo:<input type="text" readonly name="cd_entidad" id="cd_entidad" value="{cd_entidad}"/></p>
-			<p> Nombre: <input type='text' name='ds_entidad' id='ds_entidad' size='40' value="{ds_entidad}" class="fValidate['required']"/></p>			
+			<p> Nombre: <input type='text' name='ds_entidad' id='ds_entidad' size='40' value="{ds_entidad}" class="fValidate['required']"/></p>
+            Activa: <input type="checkbox" name="bl_activo" {checked} />
 			<p style="text-align:center">
 			<input type='submit' name='submit' value='Aceptar' />
 			<input type='reset' name='cancelar' value='Cancelar' onclick="javascript:history.back(-1);" />

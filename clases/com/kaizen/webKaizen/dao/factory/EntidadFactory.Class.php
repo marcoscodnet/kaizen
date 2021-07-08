@@ -1,16 +1,16 @@
 <?php
 /**
- * 
+ *
  * @author Lucrecia
  * @since 09-01-2011
- * 
- * Factory para país.
+ *
+ * Factory para paï¿½s.
  *
  */
 class EntidadFactory implements ObjectFactory{
 
 	/**
-	 * construye una entidad. 
+	 * construye una entidad.
 	 * @param $next
 	 * @return unknown_type
 	 */
@@ -18,6 +18,7 @@ class EntidadFactory implements ObjectFactory{
 		$oEntidad = new Entidad();
 		$oEntidad->setCd_entidad( $next ['cd_entidad'] );
 		$oEntidad->setDs_entidad( $next ['ds_entidad'] );
+        $oEntidad->setBl_activo( $next ['bl_activo'] );
 		return $oEntidad;
 	}
 }

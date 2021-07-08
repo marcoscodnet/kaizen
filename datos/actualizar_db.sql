@@ -9,7 +9,7 @@ ALTER TABLE ventapieza_unidad ENGINE = innodb ;
 ALTER TABLE ventapieza_unidad ADD cd_sucursal INT NOT NULL AFTER cd_pieza ;
 ALTER TABLE ADD INDEX fk_ventapieza_has_pieza_sucursal1 ( cd_sucursal ) ;
 ALTER TABLE ventapieza_unidad DROP PRIMARY KEY ,
-ADD PRIMARY KEY ( cd_ventapieza , cd_pieza , cd_sucursal ); 
+ADD PRIMARY KEY ( cd_ventapieza , cd_pieza , cd_sucursal );
 
 ALTER TABLE ventapieza ADD cd_usuario INT NOT NULL ;
 
@@ -187,12 +187,12 @@ NULL , 'Imprimir Orden de Servicio'
 );
 
 ####################### 24/05/2013 ######################################
-  ALTER TABLE `venta` CHANGE `dt_venta` `dt_venta` DATETIME NULL DEFAULT '0000-00-00 00:00:00' 
+  ALTER TABLE `venta` CHANGE `dt_venta` `dt_venta` DATETIME NULL DEFAULT '0000-00-00 00:00:00'
 
 ####################### 14/12/2013 ######################################
 ALTER TABLE `localidad`
 	ADD COLUMN `ds_cp` VARCHAR(20) NULL AFTER `cd_provincia`;
-	
+
 UPDATE `localidad` SET `ds_cp`='1900' WHERE  `cd_localidad`=62;
 UPDATE `localidad` SET `ds_cp`='1925' WHERE  `cd_localidad`=48;
 UPDATE `localidad` SET `ds_cp`='1896' WHERE  `cd_localidad`=38;
@@ -208,7 +208,7 @@ ALTER TABLE `servicio`
 
 SET FOREIGN_KEY_CHECKS = 0;
 UPDATE servicio INNER JOIN usuario
-ON servicio.cd_usuario = usuario.cd_usuario 
+ON servicio.cd_usuario = usuario.cd_usuario
 SET servicio.cd_sucursal = usuario.cd_sucursal;
 SET FOREIGN_KEY_CHECKS = 1;
 
@@ -216,6 +216,10 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 ALTER TABLE `producto`
 	ADD COLUMN `bl_discontinuo` BINARY(1) NULL DEFAULT '0' AFTER `cd_color`;
-	
+
 ALTER TABLE `usuario`
 	ADD COLUMN `bl_activo` BINARY(1) NULL DEFAULT '1' AFTER `cd_perfil`;
+
+##########################07/07/2021#######################################
+ALTER TABLE `entidad`
+	ADD COLUMN `bl_activo` BINARY(1) NULL DEFAULT '1' AFTER `ds_entidad`;
