@@ -31,7 +31,7 @@
 						onComplete : function() {
 							cd_cliente = document.getElementById('rta').innerHTML;
 							if ((cd_cliente != "") && (cd_cliente != "0")) {
-								jAlert("Error: Ya existe un cliente con ese tipo y número de documento");
+								jAlert("Error: Ya existe un cliente con ese tipo y nï¿½mero de documento");
 								document.getElementById('cd_tipodoc').value = "";
 								nu_duc = document.getElementById('nu_doc').value = "";
 								padre = nu_doc.parentNode;
@@ -92,14 +92,14 @@
 		ajaxLoc.request();
 	}
 
-    
+
 	function ejecutarAceptar(formulario, validator) {
 		document.getElementById("btnAceptar").value = "Enviando...";
     	document.getElementById('btnAceptar').disabled=true;
 		validator.initialize('editarcliente', validator.options);
 		ok = validator._validateAll();
 		if (ok) {
-			
+
 			formulario.submit();
 		}
 		else{
@@ -189,8 +189,8 @@
 <p>Tel&eacute;fono particular (*): <input type='text'
 	name='ds_teparticular' id='ds_teparticular' size='30'
 	value="{ds_teparticular}" class="fValidate['required']" /></p>
-<p>Tel&eacute;fono movil: <input type='text' name='ds_telaboral'
-	id='ds_telaboral' size='30' value="{ds_telaboral}" /></p>
+<p>Tel&eacute;fono movil (*): <input type='text' name='ds_telaboral'
+	id='ds_telaboral' size='30' value="{ds_telaboral}" class="fValidate['required']"/></p>
 <p>Email: <input type='text' name='ds_email'
 	id='ds_email' size='30' value="{ds_email}" class="fValidate['email']" /></p>
 <p>Actividad/Ocupaci&oacute;n : <input type='text'

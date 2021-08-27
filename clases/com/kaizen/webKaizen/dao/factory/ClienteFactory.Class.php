@@ -32,7 +32,7 @@ class ClienteFactory implements ObjectFactory{
 		$oCliente->setDs_cp($next ['ds_cp']);
 		$oCliente->setDs_teparticular($next ['ds_telparticular']);
 		$oCliente->setDs_telaboral($next ['ds_tellaboral']);
-                $oCliente->setDs_email($next ['ds_email']);
+		$oCliente->setDs_email($next ['ds_email']);
 		$oCliente->setDs_actividad_ocupacion($next ['ds_actividad_ocupacion']);
 		$oCliente->setDs_lugartrabajo($next ['ds_lugar_trabajo']);
 		$oCliente->setDs_cuil_cuit($next ['ds_cuil_cuit']);
@@ -63,7 +63,7 @@ class ClienteFactory implements ObjectFactory{
 			$condivaFactory = new CondivaFactory();
 			$oCliente->setCondiva( $condivaFactory->build($next) );
 		}
-		
+
 		if(array_key_exists('ds_comollego',$next)){
 			$comollegoFactory = new ComollegoFactory();
 			$oCliente->setComollego( $comollegoFactory->build($next) );
