@@ -53,7 +53,7 @@
                 jAlert('Debe seleccionar un tipo de documento');
             } else {
                 if (nu_doc == "" || isNaN(nu_doc)) {
-                    jAlert('Debe ingresar un número de documento');
+                    jAlert('Debe ingresar un nï¿½mero de documento');
                 }
             }
         }
@@ -170,8 +170,21 @@
 
     }
 
-   
 
+    function ejecutarAceptar(formulario, validator) {
+        document.getElementById("btnAceptarServicio").value = "Enviando...";
+        document.getElementById('btnAceptarServicio').disabled=true;
+        validator.initialize('altaservicio', validator.options);
+        ok = validator._validateAll();
+        if (ok) {
+
+            formulario.submit();
+        }
+        else{
+            document.getElementById("btnAceptarServicio").value = "Registrar Servicio";
+            document.getElementById('btnAceptarServicio').disabled=false;
+        }
+    }
     
     
    
@@ -248,7 +261,7 @@
                 <!-- END: option_sucursal -->
             </select></p>
         <br />
-        <p class="titulo">Estado general del vehículo</p>
+        <p class="titulo">Estado general del vehï¿½culo</p>
         <p> Kilometraje/Horas (*): <input type='text' name='ds_kmshoras' id='ds_kmshoras' size='20'  value="{ds_kmshoras}" class="fValidate['required']"/></p>
          <p>
             <label style="vertical-align: top;">Observaciones: </label>
@@ -262,27 +275,29 @@
             </select>
         </p>
         <p>
-            <label style="vertical-align: top;">Descripción pedido cliente: </label>
+            <label style="vertical-align: top;">Descripciï¿½n pedido cliente: </label>
             <textarea rows="5" cols="60" id="ds_descpedidocte" name="ds_descpedidocte">{ds_descpedidocte}</textarea></p>
-		<p>Fecha ingreso vehículo: <input name="dt_ingresovehiculo" id="dt_ingresovehiculo" value="{dt_ingresovehiculo}"/></p>
+		<p>Fecha ingreso vehï¿½culo: <input name="dt_ingresovehiculo" id="dt_ingresovehiculo" value="{dt_ingresovehiculo}"/></p>
 		<p>
-            <label style="vertical-align: top;">Diagnóstico y reparación realizada: </label>
+            <label style="vertical-align: top;">Diagnï¿½stico y reparaciï¿½n realizada: </label>
             <textarea rows="5" cols="60" id="ds_diagyreprealizada" name="ds_diagyreprealizada">{ds_diagyreprealizada}</textarea></p>
 		<p>
             <label style="vertical-align: top;">Repuestos utilizados: </label>
             <textarea rows="5" cols="60" id="ds_repuestosusados" name="ds_repuestosusados">{ds_repuestosusados}</textarea></p>
         <p>
-            <label style="vertical-align: top;">Mecánicos: </label>
+            <label style="vertical-align: top;">Mecï¿½nicos: </label>
             
             <input type='text' name='ds_mecanicos' id='ds_mecanicos' size='30'  value="{ds_mecanicos}"/></p>
         <p>
-            <label style="vertical-align: top;">Instrumentos de medición utilizados: </label>
+            <label style="vertical-align: top;">Instrumentos de mediciï¿½n utilizados: </label>
             <textarea rows="5" cols="60" id="ds_instmedusados" name="ds_instmedusados">{ds_instmedusados}</textarea></p>
         <p> Tiempo de mano de obra : <input type='text' name='ds_tiempomanoobra' id='ds_tiempomanoobra' size='20'  value="{ds_tiempomanoobra}"/></p>
 		<p> Fecha compromiso entrega (*): <input type='text' name='dt_compromisoentrega' id='dt_compromisoentrega' size='20'  value="{dt_compromisoentrega}" class="fValidate['required','date']" /></p>
          <p> Precio a cobrar: <input type='text' name='nu_monto' id='nu_monto' size='10'  value="{nu_monto}" class="fValidate['real']"/></p>
         Pagado: <input type="checkbox" name="bl_pagado" {checked}/> <br> <br>
-        <input type='submit' name='btnAceptar' value='Registrar Servicio'/>
+        <!--<input type='submit' name='btnAceptar' value='Registrar Servicio'/>-->
+        <input type='button' name='btnAceptar' id='btnAceptarServicio'
+               value='Registrar Servicio' onClick="javascript:ejecutarAceptar(this.form, exValidatorA);" />
         <input type='reset' name='cancelar' value='Cancelar'
                onclick="javascript:history.back(-1);" /></form>
 

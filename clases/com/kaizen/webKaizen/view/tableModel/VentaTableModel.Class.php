@@ -10,8 +10,8 @@
  */
 class VentaTableModel extends ListarTableModel {
 
-	private $columnNames = array('Nro. motor','Modelo','Cliente', 'Vendedor', 'Sucursal', 'Fecha', 'Acreditado', 'Estado', "Pago");
-	private $columnWidths = array(30,50,50,35,30,20, 25, 20, 15);
+	private $columnNames = array('Nro. motor','Modelo','Cliente', 'Vendedor', 'Sucursal', 'Fecha', 'Estado', "Pago");
+	private $columnWidths = array(30,50,50,35,30,20, 20, 15);
 
 	public function VentaTableModel(ItemCollection $items) {
 		$this->items = $items;
@@ -30,7 +30,7 @@ class VentaTableModel extends ListarTableModel {
 	 * @see clases/com/codnet/view/tableModel/TableModel#getColumnCount()
 	 */
 	function getColumnCount() {
-		return 9;
+		return 8;
 	}
 
 	/**
@@ -82,11 +82,10 @@ class VentaTableModel extends ListarTableModel {
 			break;
 			case 5: $value = $oVenta->getDt_fecha();
 			break;
-			case 6: $value = $oVenta->getNu_montoVenta();
+			
+			case 6: $value = $oVenta->getDs_autorizada();
 			break;
-			case 7: $value = $oVenta->getDs_autorizada();
-			break;
-                        case 8: $value = $oVenta->getDs_formapago();
+                        case 7: $value = $oVenta->getDs_formapago();
 			break;
 			default: $value = '';
 			break;
@@ -101,9 +100,9 @@ class VentaTableModel extends ListarTableModel {
 		$encabezados[] = $this->buildTh($this->getColumnName(3), 'U.ds_apynom', 'Nombre de usuario');
 		$encabezados[] = $this->buildTh($this->getColumnName(4), 'ds_nombre', 'Sucursal');
 		$encabezados[] = $this->buildTh($this->getColumnName(5), 'dt_venta', 'Fecha');
-		$encabezados[] = $this->buildTh($this->getColumnName(6), 'nu_total', 'Import venta');
-		$encabezados[] = $this->buildTh($this->getColumnName(7), 'cd_autorizacion', 'Autorización');
-                $encabezados[] = $this->buildTh($this->getColumnName(8), 'ds_formapago', 'Forma de pago');
+		
+		$encabezados[] = $this->buildTh($this->getColumnName(6), 'cd_autorizacion', 'Autorización');
+                $encabezados[] = $this->buildTh($this->getColumnName(7), 'ds_formapago', 'Forma de pago');
 		return $encabezados;
 	}
 
